@@ -3,14 +3,19 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.templating import Jinja2Templates
 from dotenv import load_dotenv
 import os
+import smtplib
+from email.mime.text import MIMEText
+
+from starlette.staticfiles import StaticFiles
 
 load_dotenv()
 
 EMAIL_ADDRESS = os.environ.get("EMAIL_ADDRESS")
 EMAIL_PASSWORD = os.environ.get("EMAIL_PASSWORD")
 
-
 app = FastAPI()
+
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 templates = Jinja2Templates(directory="frontend")
 
@@ -19,7 +24,6 @@ origins = [
     "http://localhost",
     "localhost:3000"
 ]
-
 
 app.add_middleware(
     CORSMiddleware,
