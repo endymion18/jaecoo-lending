@@ -337,7 +337,7 @@ function numberFunc(input) {
 
     console.log(form);
 
-    //outputJSON(form);
+    outputJSON(form);
 
     const botMessage = document.getElementById('chat-bot');
 
@@ -367,7 +367,7 @@ function inputPhone() {
 function outputJSON(form) {
     const jsonData = JSON.stringify(form);
 
-    fetch('/http://127.0.0.1:8000/send-email"', {
+    fetch('http://127.0.0.1:8000/send-email', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

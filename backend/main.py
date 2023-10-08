@@ -5,7 +5,7 @@ from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.templating import Jinja2Templates
 from dotenv import load_dotenv
-from email.mime.text import MIMEText
+from email.message import EmailMessage
 from starlette.staticfiles import StaticFiles
 
 from backend.models import UserRequestToManager
@@ -31,9 +31,8 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
     allow_credentials=True,
-    allow_methods=["GET"],
-    allow_headers=["Content-Type", "Set-Cookie", "Access-Control-Allow-Headers", "Access-Control-Allow-Origin",
-                   "Authorization"],
+    allow_methods=["GET", "POST"],
+    allow_headers=["Content-Type"],
 )
 
 
@@ -42,6 +41,28 @@ def get_base_page(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
 
-@app.get("/send-email", tags=["chat-bot"])
+@app.post("/send-email", tags=["chat-bot"])
 async def send_email_to_manager(user_info: UserRequestToManager):
-    pass
+    user_info = dict(user_info)
+
+    options = ', '.join(user_info['options']) if len(user_info['options']) > 0 else "Не выбраны"
+
+    msg = EmailMessage()
+    msg['Subject'] = 'Новая заявка!'
+    msg['From'] = EMAIL_ADDRESS
+    msg['To'] = EMAIL_ADDRESS
+    text = f"Машина: {user_info['car']}\n" \
+           f"Опции: {options}\n" \
+           f"Цвет: {user_info['color']}\n" \
+           f"Тип оплаты: {user_info['payment_type']}\n" \
+           f"Как связаться: {user_info['contact_type']}\n\n" \
+           f"Номер: {user_info['number']}\n" \
+           f"Имя клиента: {user_info['client_name']}"
+
+    msg.set_content(text)
+
+    with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
+        server.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
+        server.send_message(msg)
+
+
