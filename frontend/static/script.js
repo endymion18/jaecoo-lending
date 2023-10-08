@@ -9,11 +9,11 @@ button.addEventListener('click', function () {
 var step = 0;
 
 var form = {
-    car: "none",
+    car: "string",
     options: [],
-    color: "none",
-    payment_type: "none",
-    contact_type: "none",
+    color: "string",
+    payment_type: "string",
+    contact_type: "string",
     number: "88005553535",
     client_name: "Name"
 }
@@ -337,12 +337,13 @@ function numberFunc(input) {
 
     console.log(form);
 
+    //outputJSON(form);
+
     const botMessage = document.getElementById('chat-bot');
 
     var text1 = `${input}`
 
     botMessage.insertAdjacentHTML("beforebegin", messageTextUser(text1));
-    //botMessage.insertAdjacentHTML("beforebegin", selectionPay());
 
     var text2 = `Спасибо, это были все вопросы.`
     var text3 = `Наш менеджер свяжется с Вами и предложит автомобили из наличия или под заказ.`
@@ -352,8 +353,6 @@ function numberFunc(input) {
     botMessage.insertAdjacentHTML("beforebegin", messageTextBot(text4));
 
     //botMessage.insertAdjacentHTML("beforebegin", selectionNumber());
-
-
 }
 
 function inputName() {
