@@ -1,12 +1,14 @@
+import os
+import smtplib
+
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.templating import Jinja2Templates
 from dotenv import load_dotenv
-import os
-import smtplib
 from email.mime.text import MIMEText
-
 from starlette.staticfiles import StaticFiles
+
+from backend.models import UserRequestToManager
 
 load_dotenv()
 
@@ -15,7 +17,7 @@ EMAIL_PASSWORD = os.environ.get("EMAIL_PASSWORD")
 
 app = FastAPI()
 
-app.mount("/static", StaticFiles(directory="static"), name="static")
+app.mount("/static", StaticFiles(directory="frontend/static"), name="static")
 
 templates = Jinja2Templates(directory="frontend")
 
@@ -41,5 +43,5 @@ def get_base_page(request: Request):
 
 
 @app.get("/send-email", tags=["chat-bot"])
-async def send_email_to_manager():
+async def send_email_to_manager(user_info: UserRequestToManager):
     pass
