@@ -9,13 +9,13 @@ button.addEventListener('click', function () {
 var step = 0;
 
 var form = {
-    car: "string",
-    options: 0,
-    color: "string",
-    payment_type: "string",
-    contact_type: "string",
-    number: "string",
-    client_name: "string"
+    car: "none",
+    options: [],
+    color: "none",
+    payment_type: "none",
+    contact_type: "none",
+    number: "88005553535",
+    client_name: "Name"
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -51,25 +51,25 @@ function selectionCars() {
         <div class="chat-bot-message">
             <div class="selection-buttons">
                 <div class="selection-button">
-                    <button class="selection-button-text" onclick="carFunc(1)">
+                    <button class="selection-button-text" onclick="carFunc('машина 1')">
                         <img src="${img2}">
                         <p>${text1}</p>
                     </button>
                 </div>
                 <div class="selection-button">
-                    <button class="selection-button-text" onclick="carFunc(2)">
+                    <button class="selection-button-text" onclick="carFunc('машина 2')">
                         <img src="${img2}">
                         <p>${text2}</p>
                     </button>
                 </div>
                 <div class="selection-button">
-                    <button class="selection-button-text" onclick="carFunc(3)">
+                    <button class="selection-button-text" onclick="carFunc('машина 3')">
                         <img src="${img2}">
                         <p>${text3}</p>
                     </button>
                 </div>
                 <div class="selection-button">
-                    <button class="selection-button-text" onclick="carFunc(4)">
+                    <button class="selection-button-text" onclick="carFunc('машина 4')">
                         <img src="${img2}">
                         <p>${text4}</p>
                     </button>
@@ -87,7 +87,7 @@ function carFunc(input) {
     step = 1;
 
     const botMessage = document.getElementById('chat-bot');
-    var text1 = `${input} машина`
+    var text1 = `${input}`
 
     botMessage.insertAdjacentHTML("beforebegin", messageTextUser(text1));
 
