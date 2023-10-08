@@ -293,7 +293,7 @@ function selectionPay() {
 function payFunc(input) {
     form.pay = input;
 
-    console.log(form);
+
 
     const botMessage = document.getElementById('chat-bot');
 
@@ -335,6 +335,8 @@ function selectionNumber() {
 function numberFunc(input) {
     form.connection = input;
 
+    console.log(form);
+
     const botMessage = document.getElementById('chat-bot');
 
     var text1 = `${input}`
@@ -350,6 +352,8 @@ function numberFunc(input) {
     botMessage.insertAdjacentHTML("beforebegin", messageTextBot(text4));
 
     //botMessage.insertAdjacentHTML("beforebegin", selectionNumber());
+
+
 }
 
 function inputName() {
@@ -357,11 +361,25 @@ function inputName() {
 
 }
 
-function inputPhone() { }
+function inputPhone() {
 
+}
 
+function outputJSON(form) {
+    const jsonData = JSON.stringify(form);
 
-
+    fetch('/http://localhost:3000"', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: jsonData, // JSON данные
+    })
+        .then(response => response.json())
+        .catch(error => {
+            console.error('Ошибка:', error);
+        });
+}
 
 
 
