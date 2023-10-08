@@ -9,14 +9,14 @@ button.addEventListener('click', function () {
 var step = 0;
 
 var form = {
-    model: 0,
-    items: 0,
-    color: 'none',
-    pay: 'none',
-    connection: 'none',
-    name: 'none',
-    numberPhone: 'none',
-};
+    car: "string",
+    options: 0,
+    color: "string",
+    payment_type: "string",
+    contact_type: "string",
+    number: "string",
+    client_name: "string"
+}
 
 document.addEventListener('DOMContentLoaded', function () {
     //начало диалога
@@ -83,7 +83,7 @@ function selectionCars() {
 
 function carFunc(input) {
     //выбор модели от пользователя
-    form.model = input;
+    form.car = input;
     step = 1;
 
     const botMessage = document.getElementById('chat-bot');
@@ -132,7 +132,7 @@ function choiceEquipment() {
     const itemList = document.querySelectorAll('#itemList input[type="checkbox"]:checked');
     const selectedItems = Array.from(itemList).map(item => item.value);
 
-    form.items = selectedItems;
+    form.options = selectedItems;
 
     let selected = ``;
 
@@ -291,7 +291,7 @@ function selectionPay() {
 }
 
 function payFunc(input) {
-    form.pay = input;
+    form.payment_type = input;
 
 
 
@@ -333,7 +333,7 @@ function selectionNumber() {
 }
 
 function numberFunc(input) {
-    form.connection = input;
+    form.contact_type = input;
 
     console.log(form);
 
@@ -368,7 +368,7 @@ function inputPhone() {
 function outputJSON(form) {
     const jsonData = JSON.stringify(form);
 
-    fetch('/http://localhost:3000"', {
+    fetch('/http://127.0.0.1:8000/send-email"', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
