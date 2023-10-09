@@ -124,6 +124,8 @@ body {
     width: 50%;
     margin-left: 25%;
     margin-bottom: 50px;
+    padding-bottom: 70px;
+
     border-radius: 30px;
 
 
@@ -133,6 +135,8 @@ body {
     background-color: rgb(231, 231, 231);
 
     box-shadow: 5px 5px 15px rgb(112, 112, 112);
+
+    transition: height 100ms ease, transform 700ms ease, opacity 700ms ease;
 }
 
 #header-chat {
@@ -155,6 +159,22 @@ body {
     margin-left: 1%;
     background-color: rgba(255, 255, 255, 0);
     border-radius: 10px;
+
+
+    animation-name: slideInLeftMessageBot;
+    animation-duration: 0.5s;
+}
+
+@keyframes slideInLeftMessageBot {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
 }
 
 #chat-user-message {
@@ -168,7 +188,24 @@ body {
     padding: 1% 2%;
     background-color: rgba(255, 255, 255, 0);
     border-radius: 10px;
+
+
+    animation-name: slideInLeftMessageUser;
+    animation-duration: 0.5s;
 }
+
+@keyframes slideInLeftMessageUser {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
 
 .avatar {
     position: relative;
@@ -245,6 +282,9 @@ body {
     border-radius: 20px;
     background-color: white;
     box-shadow: 3px 3px 10px rgb(112, 112, 112);
+
+    animation-name: slideInLeftMessageBot;
+    animation-duration: 0.5s;
 }
 
 .selection-button-text:hover {
@@ -277,6 +317,9 @@ body {
     border-radius: 30px;
     background-color: white;
     box-shadow: 3px 3px 10px rgb(112, 112, 112);
+
+    animation-name: slideInLeftMessageBot;
+    animation-duration: 0.5s;
 }
 
 .selection-color-text:hover {
