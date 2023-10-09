@@ -18,6 +18,12 @@ var form = {
     client_name: "Name"
 }
 
+function delay(ms) {
+    return new Promise(resolve => {
+        setTimeout(resolve, ms);
+    });
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     //начало диалога
     const botMessage = document.getElementById('chat-bot');
@@ -29,11 +35,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var textMessages = [text1, text2, text3]
 
+    let time = 0;
+
     for (let text of textMessages) {
-        botMessage.insertAdjacentHTML("beforebegin", messageTextBot(text));
+        setTimeout(function () {
+            botMessage.insertAdjacentHTML("beforebegin", messageTextBot(text));
+
+        }, time);
+        time += 1000;
     }
 
-    botMessage.insertAdjacentHTML("beforebegin", selectionCars());
+    setTimeout(function () {
+        botMessage.insertAdjacentHTML("beforebegin", selectionCars());
+    }, time);
+
+
+
 });
 
 //выбор модели машины
@@ -89,9 +106,19 @@ function carFunc(input) {
     const botMessage = document.getElementById('chat-bot');
     var text1 = `${input}`
 
-    botMessage.insertAdjacentHTML("beforebegin", messageTextUser(text1));
+    setTimeout(function () {
+        botMessage.insertAdjacentHTML("beforebegin", messageTextUser(text1));
+        botMessage.scrollIntoView({ behavior: 'smooth' });
+    }, 0);
 
-    botMessage.insertAdjacentHTML("beforebegin", optionList());
+    setTimeout(function () {
+        botMessage.insertAdjacentHTML("beforebegin", optionList());
+        botMessage.scrollIntoView({ behavior: 'smooth' });
+    }, 1000);
+
+
+
+
 }
 
 function optionList() {
@@ -140,13 +167,28 @@ function choiceEquipment() {
         selected += String(selectedItems[i]) + `<br>`;
     }
 
-    botMessage.insertAdjacentHTML("beforebegin", messageTextUser(selected));
+    setTimeout(function () {
+        botMessage.insertAdjacentHTML("beforebegin", messageTextUser(selected));
+        botMessage.scrollIntoView({ behavior: 'smooth' });
+    }, 0);
+
 
 
     //предложение цвета от бота
     var text1 = `Выберите цвет автомобиля:`
-    botMessage.insertAdjacentHTML("beforebegin", messageTextBot(text1));
-    botMessage.insertAdjacentHTML("beforebegin", selectionColors());
+
+    setTimeout(function () {
+        botMessage.insertAdjacentHTML("beforebegin", messageTextBot(text1));
+        botMessage.scrollIntoView({ behavior: 'smooth' });
+    }, 1000);
+
+    setTimeout(function () {
+        botMessage.insertAdjacentHTML("beforebegin", selectionColors());
+        botMessage.scrollIntoView({ behavior: 'smooth' });
+    }, 2000);
+
+
+
 }
 
 function selectionColors() {
@@ -247,13 +289,27 @@ function colorFunc(input) {
 
     var text1 = `${input}`
 
-    botMessage.insertAdjacentHTML("beforebegin", messageTextUser(text1));
 
+    setTimeout(function () {
+        botMessage.insertAdjacentHTML("beforebegin", messageTextUser(text1));
+
+        botMessage.scrollIntoView({ behavior: 'smooth' });
+    }, 0);
 
     var text2 = `Как планируете приобретать автомобиль?`
 
-    botMessage.insertAdjacentHTML("beforebegin", messageTextBot(text2));
-    botMessage.insertAdjacentHTML("beforebegin", selectionPay());
+    setTimeout(function () {
+        botMessage.insertAdjacentHTML("beforebegin", messageTextBot(text2));
+
+        botMessage.scrollIntoView({ behavior: 'smooth' });
+    }, 1000);
+
+    setTimeout(function () {
+        botMessage.insertAdjacentHTML("beforebegin", selectionPay());
+
+        botMessage.scrollIntoView({ behavior: 'smooth' });
+    }, 2000);
+
 }
 
 function selectionPay() {
@@ -299,12 +355,33 @@ function payFunc(input) {
 
     var text1 = `${input}`
 
-    botMessage.insertAdjacentHTML("beforebegin", messageTextUser(text1));
+
+    setTimeout(function () {
+        botMessage.insertAdjacentHTML("beforebegin", messageTextUser(text1));
+
+        botMessage.scrollIntoView({ behavior: 'smooth' });
+    }, 0);
+
     //botMessage.insertAdjacentHTML("beforebegin", selectionPay());
 
     var text2 = `Вы хотите получить расчет стоимости автомобиля звонком по телефону или через WhatsApp?`
-    botMessage.insertAdjacentHTML("beforebegin", messageTextBot(text2));
-    botMessage.insertAdjacentHTML("beforebegin", selectionNumber());
+
+    setTimeout(function () {
+        botMessage.insertAdjacentHTML("beforebegin", messageTextBot(text2));
+
+
+        botMessage.scrollIntoView({ behavior: 'smooth' });
+    }, 1000);
+
+    setTimeout(function () {
+
+        botMessage.insertAdjacentHTML("beforebegin", selectionNumber());
+
+        botMessage.scrollIntoView({ behavior: 'smooth' });
+    }, 2000);
+
+
+
 }
 
 function selectionNumber() {
@@ -337,20 +414,35 @@ function numberFunc(input) {
 
     console.log(form);
 
-    outputJSON(form);
+    //outputJSON(form);
 
     const botMessage = document.getElementById('chat-bot');
 
     var text1 = `${input}`
 
-    botMessage.insertAdjacentHTML("beforebegin", messageTextUser(text1));
+    setTimeout(function () {
+        botMessage.insertAdjacentHTML("beforebegin", messageTextUser(text1));
+
+        botMessage.scrollIntoView({ behavior: 'smooth' });
+    }, 0);
 
     var text2 = `Спасибо, это были все вопросы.`
     var text3 = `Наш менеджер свяжется с Вами и предложит автомобили из наличия или под заказ.`
     var text4 = `Оставьте ваше имя и телефон:`
-    botMessage.insertAdjacentHTML("beforebegin", messageTextBot(text2));
-    botMessage.insertAdjacentHTML("beforebegin", messageTextBot(text3));
-    botMessage.insertAdjacentHTML("beforebegin", messageTextBot(text4));
+
+    var textMessages = [text2, text3, text4]
+
+    let time = 1000;
+
+    for (let text of textMessages) {
+        setTimeout(function () {
+            botMessage.insertAdjacentHTML("beforebegin", messageTextBot(text));
+            botMessage.scrollIntoView({ behavior: 'smooth' });
+
+        }, time);
+        time += 1000;
+
+    }
 
     //botMessage.insertAdjacentHTML("beforebegin", selectionNumber());
 }
@@ -367,7 +459,7 @@ function inputPhone() {
 function outputJSON(form) {
     const jsonData = JSON.stringify(form);
 
-    fetch('http://127.0.0.1:8000/send-email', {
+    fetch('/http://127.0.0.1:8000/send-email"', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -411,4 +503,12 @@ function messageTextUser(text) {
     `
 
     return message;
+}
+
+function sleep(millis) {
+    var t = (new Date()).getTime();
+    var i = 0;
+    while (((new Date()).getTime() - t) < millis) {
+        i++;
+    }
 }
