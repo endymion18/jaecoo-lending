@@ -5,7 +5,7 @@
 //     alert('Запись на Тест-драйв');
 // });
 
-const avatar = `/img/Ellipse 2.png`;
+const avatar = `static/img/Ellipse 2.png`;
 var step = 0;
 
 var form = {
@@ -56,14 +56,14 @@ document.addEventListener('DOMContentLoaded', function () {
 //выбор модели машины
 function selectionCars() {
     //предложение модели от бота
-    var imgCar = `/img/jaecoo_j7 1.png`;
+    var imgCar = `static/img/jaecoo_j7 1.png`;
 
     var text1 = `JAECOO J7`;
 
     return `
         <div id="chat-bot-message">
             <div id="avatar">
-                <img src="/img/white-painted-wall-texture-background 1.png">
+                <img src="static/img/white-painted-wall-texture-background 1.png">
             </div>
             <div class="selection-buttons">
                 <div class="selection-button">
@@ -123,7 +123,7 @@ function optionList() {
 
         <div id="chat-bot-message">
             <div id="avatar">
-                <img src="/img/white-painted-wall-texture-background 1.png">
+                <img src="static/img/white-painted-wall-texture-background 1.png">
             </div>
             <div class="selection-colors">
                 <div class="selection-color">
@@ -151,6 +151,8 @@ function choiceEquipment() {
     for (let i = 0; i < selectedItems.length; i++) {
         selected += String(selectedItems[i]) + `<br>`;
     }
+
+    selected = selected.length ? selected : "Опции не выбраны";
 
     setTimeout(function () {
         botMessage.insertAdjacentHTML("beforebegin", messageTextUser(selected));
@@ -192,7 +194,7 @@ function selectionColors() {
     var buttons = `
         <div id="chat-bot-message">
             <div id="avatar">
-                <img src="/img/white-painted-wall-texture-background 1.png">
+                <img src="static/img/white-painted-wall-texture-background 1.png">
             </div>
             <div class="selection-colors">
 
@@ -312,7 +314,7 @@ function selectionPay() {
     var buttons = `
         <div id="chat-bot-message">
             <div id="avatar">
-                <img src="/img/white-painted-wall-texture-background 1.png">
+                <img src="static/img/white-painted-wall-texture-background 1.png">
             </div>
             <div class="selection-colors">
                 <div class="selection-color">
@@ -386,7 +388,7 @@ function selectionNumber() {
     return `
         <div id="chat-bot-message">
             <div id="avatar">
-                <img src="/img/white-painted-wall-texture-background 1.png">
+                <img src="static/img/white-painted-wall-texture-background 1.png">
             </div>
             <div class="selection-colors">
                 <div class="selection-color">
@@ -409,7 +411,7 @@ function numberFunc(input) {
 
     console.log(form);
 
-    //outputJSON(form);
+    outputJSON(form);
 
     const botMessage = document.getElementById('chat-bot');
 
@@ -453,7 +455,7 @@ function inputPhone() {
 function outputJSON(form) {
     const jsonData = JSON.stringify(form);
 
-    fetch('/http://127.0.0.1:8000/send-email"', {
+    fetch('http://127.0.0.1:8000/send-email', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

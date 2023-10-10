@@ -6,6 +6,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.templating import Jinja2Templates
 from dotenv import load_dotenv
 from email.message import EmailMessage
+
+from starlette.responses import HTMLResponse
 from starlette.staticfiles import StaticFiles
 
 from backend.models import UserRequestToManager
@@ -36,7 +38,7 @@ app.add_middleware(
 )
 
 
-@app.get("/")
+@app.get("/", response_class=HTMLResponse)
 def get_base_page(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
@@ -64,5 +66,3 @@ async def send_email_to_manager(user_info: UserRequestToManager):
     with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
         server.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
         server.send_message(msg)
-
-
