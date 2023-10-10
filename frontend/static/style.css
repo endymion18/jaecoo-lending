@@ -12,8 +12,7 @@
 
 
 body {
-    /* background-image: url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ8NDQ0NFREWFhURExMYHSggGBolGxUVITEhJSkrLi4uFx8zODMtNyg5LisBCgoKBQUFDgUFDisZExkrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAKgBLAMBIgACEQEDEQH/xAAaAAEBAQEBAQEAAAAAAAAAAAAAAQIDBAcF/8QAJhABAAICAQQCAgIDAAAAAAAAAAERAhJRAyExYUGRE3HB8CKhsf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwD7iAAAAAAAAAAAAAAAAAAAAAACWCiWlgpaWlg1aWlgLaWllgtjNlgtls2WC2WzZYO4AAAAAAAAAAAAAAJYKIgNJaWlg1aWlgLaWhYLaWlgLZaJYLYgAJabA0iWmwNDGybA2Uxcm0g9YAAAAlgKIAogCogCjNlgozZYNIzZYNWiWlg0JZYAWWAkiAWkyIBaWAJaoATIAAgCoAPWCAogCpaALaWIC2WJQLYUUAigIlNLQMUU1RQM0tNUkgzRMkoCSiygIWkpILsbQzMsg6DFrEg1SGygyKAgtABSwtA9AzsbAomxsChsmwKJsmwNUM7GwNDOxsDYxsbA3QzZYNDNlgqSllgSyqAzKNM0DMo0lAzRTVAM0NUXAJRBsX6BqGqcpyk2nn/UA60U5x1Ja3ngGqVmOpH6bivQOe5skY2aguy7s6moNbmzNLoBORssYmoJcqlFAoUUB3LUmQNzdmWZx4B12NnG5hYyB1scp6kftNpkHacqT8kOcYrqDW/pN49pEKC3BTMwz35BuZSyJ5aoGKNXTVaBz1KbooHOjV01WgctViG6KBmk1boBMf8AHtPj/jrrDGeLnjlOPafH/AdtYNEiVsF0NU2NgNSl2NgZmEnFuwGKG6ZygGZllqYZmQEtiepwz3nyDU9TjuxON/3s1ELYMRjMNxKbMZfQO2y7PLvMNR1AeiGnnjqNxmDqurEZOmMgxqRcOrMwBE2rGrUZgtFM5dWP2xOcz6/QOk5RHlierxDMYrEAm2U/NfpO/M/bdAOdTzP2bZculGoOls5YpCg5xnr2nw6RMT4Zyi/LnOM494+gdktjHqffDWwNbGyXBQNRLUS5+PlmepxFg7WzOcR5cbylccQanKZ8RTGs/LpELYOeiTi3LnkDOTEy1MM0DO0lrRQMzLM48OlAOcS6YyTEOc5UD0Y5OkZvJHUX8kR8g9kZNbw8H5pnx2XGbB6surw5ZXPlcG9Qc8Zry6QfjIigW1WIXUEGqaiAZiGtVqk2Bz/JE/EwR1Y+Z/05qDpvjyTljy5xENRiDOU4/wBhn8se5ddYTSAYjKZ8R/K1lPyuleGozrzAMxgaukTEkwDC7JlDGVg3uk5OUzLO08A7WluVydwdJSYZj9qDMyjok4AxMszk1OCa+gY7pMxHtvSZI6YPPlGU+O3qExx5euMFnpxPkHHGHXGGJwr21jIO2LrjLhi64g6JquLQMR2bjuTTM50DpSTk4z1nPLqg7ZZuU5sXag6UlNpIMTBGUw0kwDUdWPmG4qfEuMwlA70xk5z1Jj2sdbmASYWMphd8T/HkCOotxPylRzBrHIJOLM4S1Ucl+wc9ZNXTZLn19AzGC0tS1EAz3NZdKUGIwXRqigTWEqOGqAYpNYdKSgYpnLpx8dnRmZBy8eW8c0yycc/U0D1R1YX80Pz5ymPbP5Z/QPfl1XPLqPPjm3Eg1awkLANRLWyR05n4/huOhPIO1JQAiAASgDnMGoAarqALGK6qAuq6gCxg1oAGq6gBRQAUUACTMADM5MZZgDnlm5zmAMTMpqgC6NRiAN44RxH06Y9OOIAHSMI4j6bigALAH//Z'); */
-    background-image: url('img/white-painted-wall-texture-background 1.png');
+    background-image: url('img/white-painted-wall-texture-background 1 (2).png');
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
@@ -178,7 +177,7 @@ body {
     color: rgb(164, 249, 37)
 }
 
-#chat-bot-message {
+.chat-bot-message {
     display: flex;
     width: 90%;
     justify-content: flex-start;
@@ -289,24 +288,7 @@ body {
     border-radius: 23px 23px 0px 23px;
     text-align: right;
 
-    max-width: 70%;
-}
-
-.chat-bot-message {
-    display: flex;
-    width: 100%;
-    margin-left: 5%;
-}
-
-.chat-user-message {
-    display: flex;
-    width: 100%;
-
-}
-
-.chat-bot-message img {
-    max-width: 200px;
-    height: auto;
+    max-width: 90%;
 }
 
 .selection-button-car-text {
@@ -496,6 +478,25 @@ body {
 
 }
 
+.inputName,
+.inputPhone {
+    animation-name: slideInLeftMessageBot;
+    animation-duration: 0.5s;
+
+}
+
+.inputName input,
+.inputPhone input {
+    border: 1px solid white;
+    padding: 17.75px 40px;
+    border-radius: 100px;
+    background-color: white;
+    box-shadow: 0px 1px 100px 0px #00000040;
+
+    font-size: 16px;
+    font-weight: 400;
+}
+
 
 
 #footer {
@@ -521,7 +522,7 @@ body {
 
     }
 
-    #button-test-drive a {
+    #button-test-drive p {
         padding: 5px;
         font-size: 12px;
     }
