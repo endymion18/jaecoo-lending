@@ -9,7 +9,6 @@ var step = {
     step4: 0,
     step5: 0,
     step6: 0,
-    step7: 0,
 };
 
 var form = {
@@ -49,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     for (let text of textMessages) {
         setTimeout(function () {
-            botMessage.insertAdjacentHTML("beforebegin", messageTextBot(text));
+            botMessage.insertAdjacentHTML("beforebegin", messageTextBot(text, 1));
 
         }, time);
         time += 1000;
@@ -63,6 +62,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }, time);
 
 
+
+
 });
 
 //выбор модели машины
@@ -73,7 +74,7 @@ function selectionCars() {
     var textMessages = `JAECOO J7`;
 
     return `
-        <div class="chat-bot-message">
+        <div class="chat-bot-message" id="1">
             ${avatarFunc()}
             <div class="selection-buttons-car">
                 <div class="selection-button-car">
@@ -90,10 +91,10 @@ function selectionCars() {
 function carFunc(input) {
     //выбор модели от пользователя
     form.car = input;
-    step = 1;
 
 
     var textMessages = `${input}`
+
 
     setTimeout(function () {
         botMessage.scrollIntoView({ behavior: 'smooth' });
@@ -101,6 +102,43 @@ function carFunc(input) {
         botMessage.insertAdjacentHTML("beforebegin", messageTextUser(textMessages));
         botMessage.scrollIntoView({ behavior: 'smooth' });
     }, 0);
+
+
+    //reload
+    console.log(step.step1);
+
+    if (step.step1 === 0) {
+        step.step1 = 1;
+        console.log(step);
+
+
+    }
+    else {
+        //location.reload();
+
+        var chatElement = document.getElementById("chat");
+        var elementsToDelete = [];
+        var shouldDelete = false;
+
+        for (var i = 0; i < chatElement.children.length; i++) {
+            var child = chatElement.children[i];
+
+            if (child.getAttribute("id") === "1") {
+                shouldDelete = true;
+                continue;
+            }
+
+            if (shouldDelete) {
+                if (child.classList.contains("chat-bot-message") || child.classList.contains("chat-user-message")) {
+                    elementsToDelete.push(child);
+                }
+            }
+        }
+
+        elementsToDelete.forEach(function (element) {
+            chatElement.removeChild(element);
+        });
+    }
 
     setTimeout(function () {
         botMessage.insertAdjacentHTML("beforebegin", optionList());
@@ -174,11 +212,29 @@ function choiceEquipment() {
         botMessage.scrollIntoView({ behavior: 'smooth' });
     }, 0);
 
+
+
+    //reload
+    console.log(step.step1);
+
+    if (step.step2 === 0) {
+        step.step2 = 1;
+        console.log(step);
+
+
+    }
+    else {
+        //location.reload();
+
+
+
+    }
+
     //предложение цвета от бота
     var text1 = `Выберите цвет автомобиля:`
 
     setTimeout(function () {
-        botMessage.insertAdjacentHTML("beforebegin", messageTextBot(text1));
+        botMessage.insertAdjacentHTML("beforebegin", messageTextBot(text1, 2));
         botMessage.scrollIntoView({ behavior: 'smooth' });
     }, 1000);
 
@@ -186,6 +242,8 @@ function choiceEquipment() {
         botMessage.insertAdjacentHTML("beforebegin", selectionColors());
         botMessage.scrollIntoView({ behavior: 'smooth' });
     }, 2000);
+
+
 }
 
 function selectionColors() {
@@ -254,10 +312,22 @@ function colorFunc(input) {
         botMessage.scrollIntoView({ behavior: 'smooth' });
     }, 0);
 
+
+    if (step.step3 === 0) {
+        step.step3 = 1;
+        console.log(step);
+
+
+    }
+    else {
+        //location.reload();
+    }
+
+
     var text2 = `Как планируете приобретать автомобиль? `
 
     setTimeout(function () {
-        botMessage.insertAdjacentHTML("beforebegin", messageTextBot(text2));
+        botMessage.insertAdjacentHTML("beforebegin", messageTextBot(text2, 3));
 
         botMessage.scrollIntoView({ behavior: 'smooth' });
     }, 1000);
@@ -324,12 +394,24 @@ function payFunc(input) {
         botMessage.scrollIntoView({ behavior: 'smooth' });
     }, 0);
 
-    //botMessage.insertAdjacentHTML("beforebegin", selectionPay());
+
+
+    if (step.step4 === 0) {
+        step.step4 = 1;
+        console.log(step);
+
+        //botMessage.insertAdjacentHTML("beforebegin", selectionPay());
+
+
+    }
+    else {
+        //location.reload();
+    }
 
     var text2 = `Вы хотите получить расчет стоимости автомобиля звонком по телефону или через WhatsApp ? `
 
     setTimeout(function () {
-        botMessage.insertAdjacentHTML("beforebegin", messageTextBot(text2));
+        botMessage.insertAdjacentHTML("beforebegin", messageTextBot(text2, 4));
 
 
         botMessage.scrollIntoView({ behavior: 'smooth' });
@@ -341,8 +423,6 @@ function payFunc(input) {
 
         botMessage.scrollIntoView({ behavior: 'smooth' });
     }, 2000);
-
-
 
 }
 
@@ -385,6 +465,17 @@ function numberFunc(input) {
         botMessage.scrollIntoView({ behavior: 'smooth' });
     }, 0);
 
+    if (step.step5 === 0) {
+        step.step5 = 1;
+        console.log(step);
+
+
+    }
+    else {
+        //location.reload();
+    }
+
+
     var text2 = `Спасибо, это были все вопросы. Наш менеджер свяжется с Вами и предложит автомобили из наличия или под заказ.`
     var text3 = `Оставьте ваше имя и телефон: `
 
@@ -394,7 +485,7 @@ function numberFunc(input) {
 
     for (let text of textMessages) {
         setTimeout(function () {
-            botMessage.insertAdjacentHTML("beforebegin", messageTextBot(text));
+            botMessage.insertAdjacentHTML("beforebegin", messageTextBot(text, 5));
             botMessage.scrollIntoView({ behavior: 'smooth' });
 
         }, time);
@@ -407,8 +498,6 @@ function numberFunc(input) {
         botMessage.scrollIntoView({ behavior: 'smooth' });
 
     }, time);
-
-
 }
 
 function inputContact() {
@@ -462,25 +551,37 @@ function inputFunc() {
     form.number = document.getElementById('phoneInput').value;
 
     console.log(form);
-    
-    outputJSON(form);
+
+    //outputJSON(form);
 
     var textMessages = `${form.client_name}<br>${form.number}`;
 
     botMessage.insertAdjacentHTML("beforebegin", messageTextUser(textMessages));
     botMessage.scrollIntoView({ behavior: 'smooth' });
 
+    if (step.step6 === 0) {
+        step.step6 = 1;
+        console.log(step);
+
+
+    }
+    else {
+        //location.reload();
+    }
+
     setTimeout(function () {
-        botMessage.insertAdjacentHTML("beforebegin", messageTextBot("Спасибо! Мы скоро свяжемся с вами."));
+        botMessage.insertAdjacentHTML("beforebegin", messageTextBot("Спасибо! Мы скоро свяжемся с вами.", 6));
         botMessage.scrollIntoView({ behavior: 'smooth' });
 
     }, 1000);
 
     setTimeout(function () {
-        location.reload();
+        //location.reload();
     }, 10000);
 
-    
+
+
+
 }
 
 function outputJSON(form) {
@@ -501,9 +602,9 @@ function outputJSON(form) {
 
 
 
-function messageTextBot(text) {
+function messageTextBot(text, id) {
     return `
-        <div class="chat-bot-message">
+        <div class="chat-bot-message" id="${id}">
             <div id="avatar">
                 <img src="${avatar}">
             </div>
