@@ -1,10 +1,7 @@
-// var button = document.getElementById('button-test-drive');
-
-// button.addEventListener('click', function () {
-//     alert('Запись на Тест-драйв');
-// });
-
 const avatar = `static/img/Ellipse 2.png`;
+const botMessage = document.getElementById('chat-bot');
+
+
 var step = {
     step1: 0,
     step2: 0,
@@ -16,24 +13,30 @@ var step = {
 };
 
 var form = {
-    car: "string",
+    car: "none",
     options: ["Опции не выбраны"],
-    color: "string",
-    payment_type: "string",
-    contact_type: "string",
-    number: "88005553535",
-    client_name: "Name"
+    color: "none",
+    payment_type: "none",
+    contact_type: "none",
+    number: "none",
+    client_name: "none"
 }
 
-function delay(ms) {
-    return new Promise(resolve => {
-        setTimeout(resolve, ms);
-    });
-}
+// window.addEventListener('scroll', function () {
+//     const scrollBlock = document.getElementById('header-chat');
+//     if (window.scrollY > 200) {
+//         scrollBlock.style.position = 'fixed';
+//         scrollBlock.style.top = '90px';
+//     } else {
+//         scrollBlock.style.position = 'static';
+//         scrollBlock.style.top = 'auto';
+//     }
+// });
+
 
 document.addEventListener('DOMContentLoaded', function () {
     //начало диалога
-    const botMessage = document.getElementById('chat-bot');
+
 
     var text1 = `Здравствуйте!<br>
     Меня зовут Алексей. Я онлайн-консультант автосалона JAECOO.`
@@ -42,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var textMessages = [text1, text2, text3]
 
-    let time = 0;
+    let time = 1000;
 
     for (let text of textMessages) {
         setTimeout(function () {
@@ -54,8 +57,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     setTimeout(function () {
         botMessage.insertAdjacentHTML("beforebegin", selectionCars());
+        botMessage.scrollIntoView({ behavior: 'smooth' });
+
         //botMessage.insertAdjacentHTML("beforebegin", inputContact());
     }, time);
+
+
 });
 
 //выбор модели машины
@@ -63,16 +70,16 @@ function selectionCars() {
     //предложение модели от бота
     var imgCar = `static/img/jaecoo_j7 1.png`;
 
-    var textMessage = `JAECOO J7`;
+    var textMessages = `JAECOO J7`;
 
     return `
         <div class="chat-bot-message">
             ${avatarFunc()}
-            <div class="selection-buttons">
-                <div class="selection-button">
-                    <button class="selection-button-car-text" onclick="carFunc('JAECOO J7')">
+            <div class="selection-buttons-car">
+                <div class="selection-button-car">
+                    <button class="selection-button-car-text" onclick="carFunc('${textMessages}')">
                         <img src="${imgCar}">
-                        <p>${textMessage}</p>
+                        <p>${textMessages}</p>
                     </button>
                 </div>
             </div>
@@ -85,11 +92,13 @@ function carFunc(input) {
     form.car = input;
     step = 1;
 
-    const botMessage = document.getElementById('chat-bot');
-    var textMessage = `${input}`
+
+    var textMessages = `${input}`
 
     setTimeout(function () {
-        botMessage.insertAdjacentHTML("beforebegin", messageTextUser(textMessage));
+        botMessage.scrollIntoView({ behavior: 'smooth' });
+
+        botMessage.insertAdjacentHTML("beforebegin", messageTextUser(textMessages));
         botMessage.scrollIntoView({ behavior: 'smooth' });
     }, 0);
 
@@ -103,7 +112,7 @@ function optionList() {
     //предложение опций от бота
 
     var options = [
-        "Двигатель 1.6 Turbo AWD",
+        "Двигатель 1.6 Turbo 2WD",
         "Двигатель 1.6 Turbo AWD",
         "19-дюймовые алюминиевые литые диски",
         "Адаптивный круиз-контроль (ACC)",
@@ -119,20 +128,20 @@ function optionList() {
             <span class="comment-bot-text">
                 <p>Выберите нужные опции:</p>
                 <ul id="itemList">
-                    <li><input type="checkbox" value="${options[0]}">${options[0]}</li>
-                    <li><input type="checkbox" value="${options[1]}">${options[1]}</li>
-                    <li><input type="checkbox" value="${options[2]}">${options[2]}</li>
-                    <li><input type="checkbox" value="${options[3]}">${options[3]}</li>
-                    <li><input type="checkbox" value="${options[4]}">${options[4]}</li>
-                    <li><input type="checkbox" value="${options[5]}">${options[5]}</li>
+                    <li><input type="checkbox" value="${options[0]}"> ${options[0]}</li>
+                    <li><input type="checkbox" value="${options[1]}"> ${options[1]}</li>
+                    <li><input type="checkbox" value="${options[2]}"> ${options[2]}</li>
+                    <li><input type="checkbox" value="${options[3]}"> ${options[3]}</li>
+                    <li><input type="checkbox" value="${options[4]}"> ${options[4]}</li>
+                    <li><input type="checkbox" value="${options[5]}"> ${options[5]}</li>
                 </ul>           
             </span>              
         </div>
 
         <div class="chat-bot-message">
             ${avatarFunc()}
-            <div class="selection-colors">
-                <div class="selection-color">
+            <div class="selection-buttons">
+                <div class="selection-button">
                     <button class="selection-button-text" onclick="choiceEquipment()"><p>Далее</p></button>
                 </div>        
             </div>
@@ -145,7 +154,7 @@ function optionList() {
 function choiceEquipment() {
 
     //выбор опций от пользователя
-    const botMessage = document.getElementById('chat-bot');
+
 
     const itemList = document.querySelectorAll('#itemList input[type="checkbox"]:checked');
     const selectedItems = Array.from(itemList).map(item => item.value);
@@ -203,7 +212,7 @@ function selectionColors() {
     var buttons = `
         <div class="chat-bot-message">
             ${avatarFunc()}
-            <div class="selection-colors">
+            <div class="selection-buttons">
                 ${buttonColorFunc(textMessages[0], idColors[0])}
                 ${buttonColorFunc(textMessages[1], idColors[1])}
                 ${buttonColorFunc(textMessages[2], idColors[2])}
@@ -221,20 +230,20 @@ function selectionColors() {
 
 function buttonColorFunc(color, idCololr) {
     return `
-    <div div class="selection-color" >
-        <button class="selection-color-text"
-            onclick="colorFunc('${color}')">
-            <div id="${idCololr}"></div>
-            <p>${color}</p>
-        </button>
-    </div >
+        <div div class="selection-button" >
+            <button class="selection-color-text"
+                onclick="colorFunc('${color}')">
+                <div id="${idCololr}"></div>
+                <p>${color}</p>
+            </button>
+        </div>
     `
 }
 
 function colorFunc(input) {
     form.color = input;
 
-    const botMessage = document.getElementById('chat-bot');
+
 
     var text1 = `${input} `
 
@@ -245,7 +254,7 @@ function colorFunc(input) {
         botMessage.scrollIntoView({ behavior: 'smooth' });
     }, 0);
 
-    var text2 = `Как планируете приобретать автомобиль ? `
+    var text2 = `Как планируете приобретать автомобиль? `
 
     setTimeout(function () {
         botMessage.insertAdjacentHTML("beforebegin", messageTextBot(text2));
@@ -266,27 +275,33 @@ function selectionPay() {
     var text2 = `Наличные`;
     var text3 = `Трейд-ин`;
 
+    var textMessages = [
+        `Кредит`,
+        `Наличные`,
+        `Трейд-ин`
+    ];
+
     var buttons = `
-    <div class="chat-bot-message">
-        ${avatarFunc()}
-        <div class="selection-colors">
-            <div class="selection-color">
-                <button class="selection-button-text" onclick="payFunc('Кредит')">
-                    <p>${text1}</p>
-                </button>
+        <div class="chat-bot-message">
+            ${avatarFunc()}
+            <div class="selection-buttons">
+                <div class="selection-button">
+                    <button class="selection-button-text" onclick="payFunc('${textMessages[0]}')">
+                        <p>${textMessages[0]}</p>
+                    </button>
+                </div>
+                <div class="selection-button">
+                    <button class="selection-button-text" onclick="payFunc('${textMessages[1]}')">
+                        <p>${textMessages[1]}</p>
+                    </button>
+                </div>
+                <div class="selection-button">
+                    <button class="selection-button-text" onclick="payFunc('${textMessages[2]}')">
+                        <p>${textMessages[2]}</p>
+                    </button>
+                </div>
             </div>
-            <div class="selection-color">
-                <button class="selection-button-text" onclick="payFunc('Наличные')">
-                    <p>${text2}</p>
-                </button>
-            </div>
-            <div class="selection-color">
-                <button class="selection-button-text" onclick="payFunc('Трейд-Ин')">
-                    <p>${text3}</p>
-                </button>
-            </div>
-        </div>
-    </div >
+        </div >
     `
 
     return buttons;
@@ -298,7 +313,7 @@ function payFunc(input) {
 
 
 
-    const botMessage = document.getElementById('chat-bot');
+
 
     var text1 = `${input} `
 
@@ -332,35 +347,35 @@ function payFunc(input) {
 }
 
 function selectionNumber() {
-    var textMessage = [`Телефон`, `WhatsApp`];
+    var textMessages = [`Телефон`, `WhatsApp`];
 
     return `
-    <div class="chat-bot-message">
-        ${avatarFunc()}
-        <div class="selection-colors">
-            <div class="selection-color">
-                <button class="selection-button-text" onclick="numberFunc('По телефону')">
-                    <p>${textMessage[0]}</p>
-                </button>
-            </div>
-            <div class="selection-color">
-                <button class="selection-button-text" onclick="numberFunc('Через WhatsApp')">
-                    <p>${textMessage[1]}</p>
-                </button>
+        <div class="chat-bot-message">
+            ${avatarFunc()}
+            <div class="selection-buttons">
+                <div class="selection-button">
+                    <button class="selection-button-text" onclick="numberFunc('${textMessages[0]}')">
+                        <p>${textMessages[0]}</p>
+                    </button>
+                </div>
+                <div class="selection-button">
+                    <button class="selection-button-text" onclick="numberFunc('${textMessages[1]}')">
+                        <p>${textMessages[1]}</p>
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
     `
 }
 
 function numberFunc(input) {
     form.contact_type = input;
 
-    console.log(form);
 
-    outputJSON(form);
 
-    const botMessage = document.getElementById('chat-bot');
+
+
+
 
     var text1 = `${input} `
 
@@ -370,7 +385,7 @@ function numberFunc(input) {
         botMessage.scrollIntoView({ behavior: 'smooth' });
     }, 0);
 
-    var text2 = `Спасибо, это были все вопросы.Наш менеджер свяжется с Вами и предложит автомобили из наличия или под заказ.`
+    var text2 = `Спасибо, это были все вопросы. Наш менеджер свяжется с Вами и предложит автомобили из наличия или под заказ.`
     var text3 = `Оставьте ваше имя и телефон: `
 
     var textMessages = [text2, text3]
@@ -400,20 +415,28 @@ function inputContact() {
     return `
         <div class="chat-bot-message">
             ${avatarFunc()}
-            <div class="selection-colors">
-                <div class="selection-color">
+            <div class="selection-buttons">
+                <div class="selection-button">
                     <div class="inputName">
-                        <input name="name" type="text" />
+                        <input 
+                        name="name" 
+                        type="text" 
+                        id="nameInput"
+                        placeholder="Введите имя" />
                     </div>
                 </div>
             </div>
         </div>
         <div class="chat-bot-message">
             ${avatarFunc()}
-            <div class="selection-colors">           
-                <div class="selection-color">
+            <div class="selection-buttons">           
+                <div class="selection-button">
                     <div class="inputPhone">
-                        <input name="phone" type="text" />
+                        <input 
+                            name="phone" 
+                            type="text" 
+                            id="phoneInput"
+                            placeholder="+7 (___) ___-__-__" />
                     </div>
                 </div>
             </div>
@@ -421,14 +444,43 @@ function inputContact() {
 
         <div class="chat-bot-message">
             ${avatarFunc()}
-            <div class="selection-colors">
-                <div class="selection-color">
-                    <button class="selection-button-text" onclick="choiceEquipment()"><p>Далее</p></button>
-                </div>        
+            <div class="selection-buttons">
+                <div class="selection-button">
+                    <button 
+                        class="selection-button-text" 
+                        onclick="inputFunc()">
+                            <p>Далее</p>
+                    </button>
+                </div>  
             </div>
         </div>
-    `
+    `;
+}
 
+function inputFunc() {
+    form.client_name = document.getElementById('nameInput').value;
+    form.number = document.getElementById('phoneInput').value;
+
+    console.log(form);
+    
+    outputJSON(form);
+
+    var textMessages = `${form.client_name}<br>${form.number}`;
+
+    botMessage.insertAdjacentHTML("beforebegin", messageTextUser(textMessages));
+    botMessage.scrollIntoView({ behavior: 'smooth' });
+
+    setTimeout(function () {
+        botMessage.insertAdjacentHTML("beforebegin", messageTextBot("Спасибо! Мы скоро свяжемся с вами."));
+        botMessage.scrollIntoView({ behavior: 'smooth' });
+
+    }, 1000);
+
+    setTimeout(function () {
+        location.reload();
+    }, 10000);
+
+    
 }
 
 function outputJSON(form) {
@@ -439,7 +491,7 @@ function outputJSON(form) {
         headers: {
             'Content-Type': 'application/json',
         },
-        body: jsonData, // JSON данные
+        body: jsonData,
     })
         .then(response => response.json())
         .catch(error => {
@@ -451,31 +503,31 @@ function outputJSON(form) {
 
 function messageTextBot(text) {
     return `
-    <div class="chat-bot-message">
-        <div id="avatar">
-            <img src="${avatar}">
+        <div class="chat-bot-message">
+            <div id="avatar">
+                <img src="${avatar}">
+            </div>
+            <span class="comment-bot-text">
+                ${text}
+            </span>
         </div>
-        <span class="comment-bot-text">
-            ${text}
-        </span>
-    </div>
     `
 }
 
 function messageTextUser(text) {
     return `
-    <div id="chat-user-message">
-        <span class="comment-user-text">
-            ${text}
-        </span>
-    </div>
+        <div class="chat-user-message">
+            <div class="comment-user-text">
+                <span>${text}</span>
+            </div>
+        </div>
     `
 }
 
 function avatarFunc() {
     return `
-    <div id="avatar">
-        <img src="static/img/white-painted-wall-texture-background 1.png">
-    </div>
-`
+        <div id="avatar">
+            <img src="static/img/white-painted-wall-texture-background 1.png">
+        </div>
+    `
 }
