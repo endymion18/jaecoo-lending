@@ -21,22 +21,8 @@ var form = {
     client_name: "none"
 }
 
-// window.addEventListener('scroll', function () {
-//     const scrollBlock = document.getElementById('header-chat');
-//     if (window.scrollY > 200) {
-//         scrollBlock.style.position = 'fixed';
-//         scrollBlock.style.top = '90px';
-//     } else {
-//         scrollBlock.style.position = 'static';
-//         scrollBlock.style.top = 'auto';
-//     }
-// });
-
-
 document.addEventListener('DOMContentLoaded', function () {
     //начало диалога
-
-
     var text1 = `Здравствуйте!<br>
     Меня зовут Алексей. Я онлайн-консультант автосалона JAECOO.`
     var text2 = `Предлагаю Вам ответить на несколько вопросов, чтобы я смог подобрать для вас специальное предложение`;
@@ -54,12 +40,16 @@ document.addEventListener('DOMContentLoaded', function () {
         }, time);
     }
 
+
     setTimeout(function () {
         botMessage.insertAdjacentHTML("beforebegin", selectionCars());
-        botMessage.scrollIntoView({ behavior: 'smooth' });
 
+        if (window.innerWidth > 900) {
+            botMessage.scrollIntoView({ behavior: 'smooth' });
+        }
         //botMessage.insertAdjacentHTML("beforebegin", inputContact());
     }, time);
+
 });
 
 //выбор модели машины
@@ -133,15 +123,15 @@ function optionList() {
             <div id="avatar">
                 <img src="${avatar}">
             </div>
-            <span class="comment-bot-text">
+            <span class="message-bot-text">
                 <p>Выберите нужные опции:</p>
                 <ul id="itemList">
-                    <li><input type="checkbox" value="${options[0]}"> ${options[0]}</li>
-                    <li><input type="checkbox" value="${options[1]}"> ${options[1]}</li>
-                    <li><input type="checkbox" value="${options[2]}"> ${options[2]}</li>
-                    <li><input type="checkbox" value="${options[3]}"> ${options[3]}</li>
-                    <li><input type="checkbox" value="${options[4]}"> ${options[4]}</li>
-                    <li><input type="checkbox" value="${options[5]}"> ${options[5]}</li>
+                    <li><input id="input1" type="checkbox" value="${options[0]}"> ${options[0]}</li>
+                    <li><input id="input1" type="checkbox" value="${options[1]}"> ${options[1]}</li>
+                    <li><input id="input1" type="checkbox" value="${options[2]}"> ${options[2]}</li>
+                    <li><input id="input1" type="checkbox" value="${options[3]}"> ${options[3]}</li>
+                    <li><input id="input1" type="checkbox" value="${options[4]}"> ${options[4]}</li>
+                    <li><input id="input1" type="checkbox" value="${options[5]}"> ${options[5]}</li>
                 </ul>           
             </span>              
         </div>
@@ -553,7 +543,7 @@ function messageTextBot(text, id) {
             <div id="avatar">
                 <img src="${avatar}">
             </div>
-            <span class="comment-bot-text">
+            <span class="message-bot-text">
                 ${text}
             </span>
         </div>
@@ -602,3 +592,30 @@ function deleteChat(id) {
         chatElement.removeChild(element);
     });
 }
+
+window.addEventListener('scroll', function () {
+    const scrollBlock = document.getElementById('header-chat');
+    const chatBlock = document.getElementById('chat');
+
+
+    if (window.innerWidth > 900) {
+        if (window.scrollY > 240) {
+            scrollBlock.style.position = 'fixed';
+            scrollBlock.style.top = '90px';
+            chatBlock.style.paddingTop = '86px';
+
+        } else {
+            scrollBlock.style.position = 'relative';
+            scrollBlock.style.top = '0px';
+            chatBlock.style.paddingTop = '0px';
+        }
+    }
+    else {
+
+    }
+});
+
+// var button = document.getElementById('button-test-drive');
+// button.addEventListener('click', function () {
+//     alert('Запись на Тест-драйв');
+// });
