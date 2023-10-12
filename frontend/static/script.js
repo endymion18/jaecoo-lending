@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var textMessages = [text1, text2, text3]
 
+
     let time = 0;
 
     for (let text of textMessages) {
@@ -127,11 +128,11 @@ function optionList() {
                 <p>Выберите нужные опции:</p>
                 <ul id="itemList">
                     <li><input id="input1" type="checkbox" value="${options[0]}"> ${options[0]}</li>
-                    <li><input id="input1" type="checkbox" value="${options[1]}"> ${options[1]}</li>
-                    <li><input id="input1" type="checkbox" value="${options[2]}"> ${options[2]}</li>
-                    <li><input id="input1" type="checkbox" value="${options[3]}"> ${options[3]}</li>
-                    <li><input id="input1" type="checkbox" value="${options[4]}"> ${options[4]}</li>
-                    <li><input id="input1" type="checkbox" value="${options[5]}"> ${options[5]}</li>
+                    <li><input id="input2" type="checkbox" value="${options[1]}"> ${options[1]}</li>
+                    <li><input id="input3" type="checkbox" value="${options[2]}"> ${options[2]}</li>
+                    <li><input id="input4" type="checkbox" value="${options[3]}"> ${options[3]}</li>
+                    <li><input id="input5" type="checkbox" value="${options[4]}"> ${options[4]}</li>
+                    <li><input id="input6" type="checkbox" value="${options[5]}"> ${options[5]}</li>
                 </ul>           
             </span>              
         </div>
@@ -457,6 +458,7 @@ function inputContact() {
                         name="name" 
                         type="text" 
                         id="nameInput"
+                        utocomplete="name"
                         placeholder="Введите имя" />
                     </div>
                 </div>
@@ -471,6 +473,7 @@ function inputContact() {
                             name="phone" 
                             type="text" 
                             id="phoneInput"
+                            utocomplete="number"
                             placeholder="+7 (___) ___-__-__" />
                     </div>
                 </div>
@@ -553,7 +556,7 @@ function messageTextBot(text, id) {
 function messageTextUser(text) {
     return `
         <div class="chat-user-message">
-            <div class="comment-user-text">
+            <div class="message-user-text">
                 <span>${text}</span>
             </div>
         </div>
@@ -580,7 +583,6 @@ function deleteChat(id) {
             shouldDelete = true;
             continue;
         }
-
         if (shouldDelete) {
             if (child.classList.contains("chat-bot-message") || child.classList.contains("chat-user-message")) {
                 elementsToDelete.push(child);
@@ -597,9 +599,8 @@ window.addEventListener('scroll', function () {
     const scrollBlock = document.getElementById('header-chat');
     const chatBlock = document.getElementById('chat');
 
-
     if (window.innerWidth > 900) {
-        if (window.scrollY > 240) {
+        if (window.scrollY > 200) {
             scrollBlock.style.position = 'fixed';
             scrollBlock.style.top = '90px';
             chatBlock.style.paddingTop = '86px';
@@ -607,11 +608,13 @@ window.addEventListener('scroll', function () {
         } else {
             scrollBlock.style.position = 'relative';
             scrollBlock.style.top = '0px';
-            chatBlock.style.paddingTop = '0px';
+            // chatBlock.style.paddingTop = '0px';
         }
     }
     else {
-
+        scrollBlock.style.position = 'fixed';
+        scrollBlock.style.top = '114px';
+        chatBlock.style.paddingTop = '0px';
     }
 });
 
