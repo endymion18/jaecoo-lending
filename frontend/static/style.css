@@ -50,10 +50,6 @@ body {
     min-height: 700px;
 }
 
-
-
-
-
 @keyframes slideInLeftMessageBot {
     from {
         opacity: 0;
@@ -117,11 +113,6 @@ body {
         transform: translateY(0px);
     }
 } */
-
-
-
-
-
 
 
 
