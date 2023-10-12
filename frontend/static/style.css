@@ -7,34 +7,20 @@
     outline: none;
     box-sizing: border-box;
     font-family: "Inter", sans-serif;
-    /* background-color: silver; */
 }
-
 
 body {
     background-image: url('img/white-painted-wall-texture-background 1 (2).png');
-    /* background-color: #C6C6C6; */
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
     background-size: cover;
 }
-
 
 .header {
     animation-name: headerAnimation;
     animation-duration: 0.5s;
 }
-
-/* .price {
-    animation-name: priceAnimation;
-    animation-duration: 0.5s;
-} */
-
-
 
 @keyframes slideInLeftMessageBot {
     from {
@@ -57,18 +43,6 @@ body {
     to {
         opacity: 1;
         transform: translateX(0px);
-    }
-}
-
-@keyframes headerAnimation {
-    from {
-        opacity: 0;
-        transform: translateY(-50px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0px);
     }
 }
 
@@ -108,7 +82,8 @@ body {
     padding: 8%;
     background-color: white;
 
-    box-shadow: 0px 1px 100px 0px #00000040;
+    box-shadow: 0px 1px 20px 0px #aaaaaa40;
+
 
 
 
@@ -137,14 +112,6 @@ body {
     margin-bottom: 2.5%;
     margin-left: 3%;
 }
-
-
-
-
-
-
-
-
 
 
 .footer {
@@ -201,8 +168,6 @@ body {
         color: white;
     }
 
-
-
     .price {
         width: 75%;
         margin-left: 12.5%;
@@ -213,8 +178,6 @@ body {
         font-weight: 700;
 
         text-align: center;
-
-
     }
 
     #avatar {
@@ -231,8 +194,6 @@ body {
 
         align-items: flex-end;
         justify-content: flex-end;
-
-
     }
 
     #avatar img {
@@ -246,9 +207,30 @@ body {
         height: 59px;
     }
 
+    #chat {
+        display: flex;
+        flex-direction: column;
+        width: 70%;
+        margin-left: 15%;
+        margin-top: 0px;
+        padding-bottom: 70px;
+
+        /* scroll-snap-align: end; */
+
+        background-color: #EAEAEA80;
+        box-shadow: 4px 4px 100px 0px #00000040;
+
+
+
+        animation-name: chatAnimation;
+        animation-duration: 0.5s;
+
+        min-height: 500px;
+    }
+
 
     #header-chat {
-        background-color: #FFFFFF;
+        background-color: #fcfcfc;
         width: 70%;
         margin-left: 15%;
         height: 86px;
@@ -257,6 +239,9 @@ body {
 
         /* animation-name: headerAnimation;
         animation-duration: 0.5s; */
+
+        animation-name: chatAnimation;
+        animation-duration: 0.5s;
     }
 
     #header-chat-profile {
@@ -293,23 +278,7 @@ body {
         color: rgb(164, 249, 37)
     }
 
-    #chat {
-        display: flex;
-        flex-direction: column;
-        width: 70%;
-        margin-left: 15%;
-        margin-top: 0px;
-        padding-bottom: 70px;
 
-        /* scroll-snap-align: end; */
-
-        background-color: #EAEAEA80;
-        box-shadow: 4px 4px 100px 0px #00000040;
-
-        animation-name: chatAnimation;
-        animation-duration: 0.5s;
-        min-height: 500px;
-    }
 
     .chat-bot-message {
         display: flex;
@@ -324,6 +293,12 @@ body {
         animation-duration: 0.5s;
     }
 
+    .chat-bot-message img {
+        max-width: 270px;
+        height: auto;
+
+    }
+
     .chat-user-message {
         display: flex;
         width: 90%;
@@ -331,9 +306,7 @@ body {
 
         margin: 3% 5% 0% 5%;
 
-
-        font-size: 0.75em;
-
+        line-height: 1.25em;
 
         animation-name: slideInLeftMessageUser;
         animation-duration: 0.5s;
@@ -354,7 +327,7 @@ body {
         max-width: 70%;
     }
 
-    .comment-user-text {
+    .message-user-text {
         background-color: #296379;
         color: white;
 
@@ -379,7 +352,8 @@ body {
         border-radius: 20px;
         background-color: white;
 
-        box-shadow: 0px 1px 100px 0px #00000040;
+        box-shadow: 0px 1px 20px 0px #aaaaaa40;
+
 
 
         animation-name: slideInLeftMessageBot;
@@ -411,7 +385,8 @@ body {
         border-radius: 100px;
         background-color: white;
 
-        box-shadow: 0px 1px 100px 0px #00000040;
+        box-shadow: 0px 1px 20px 0px #aaaaaa40;
+
 
 
         animation-name: slideInLeftMessageBot;
@@ -473,7 +448,8 @@ body {
         padding: 17.75px 30px;
         border-radius: 100px;
         background-color: white;
-        box-shadow: 0px 1px 100px 0px #00000040;
+        box-shadow: 0px 1px 20px 0px #aaaaaa40;
+
 
         font-size: 16px;
         font-weight: 400;
@@ -610,20 +586,25 @@ body {
         width: 95%;
         margin-left: 2.5%;
         margin-top: 55px;
+        padding-top: 1000px;
         box-shadow: 4px 4px 100px 0px #00000040;
 
         display: flex;
         flex-direction: column;
 
+        background-color: #EAEAEA80;
 
 
         padding-bottom: 70px;
+        padding-top: 10px;
+
+
 
         /* scroll-snap-align: end; */
 
         animation-name: chatAnimation;
         animation-duration: 0.5s;
-        min-height: 500px;
+        min-height: 550px;
     }
 
 
@@ -666,7 +647,7 @@ body {
 
     #header-chat {
         position: fixed;
-        top: 120;
+        top: 114px;
         background-color: #FFFFFF;
         width: 95%;
         margin-left: 2.5%;
@@ -674,13 +655,20 @@ body {
         z-index: 500;
         margin-bottom: 10px;
 
+        /* border-bottom: 1px solid rgb(227, 227, 227); */
+
         /* animation-name: headerAnimation;
         animation-duration: 0.5s; */
+
+        /* box-shadow: 0px 0px 20px 0px #00000040; */
+
     }
 
     #header-chat-profile {
         display: flex;
         width: 100%;
+
+        top: 400px;
 
         height: 42px;
 
@@ -717,10 +705,10 @@ body {
 
     .chat-bot-message {
         display: flex;
-        width: 90%;
+        width: 92%;
         justify-content: flex-start;
 
-        margin: 3% 5% 0% 5%;
+        margin: 3% 3% 0% 3%;
 
         line-height: 0.75em;
 
@@ -730,10 +718,10 @@ body {
 
     .chat-user-message {
         display: flex;
-        width: 90%;
+        width: 92%;
         justify-content: flex-end;
 
-        margin: 3% 5% 0% 5%;
+        margin: 3% 3% 0% 3%;
 
 
         line-height: 1em;
@@ -764,7 +752,7 @@ body {
         width: 14px;
     }
 
-    .comment-user-text {
+    .message-user-text {
         background-color: #296379;
         color: white;
 
@@ -790,11 +778,14 @@ body {
         border-radius: 200px;
         background-color: white;
 
-        box-shadow: 0px 1px 100px 0px #00000040;
+        box-shadow: 0px 1px 20px 0px #aaaaaa40;
+
 
 
         animation-name: slideInLeftMessageBot;
         animation-duration: 0.5s;
+
+        /* transition: background-color 0.3s ease; */
     }
 
     .selection-color-text:hover {
@@ -823,11 +814,14 @@ body {
         border-radius: 100px;
         background-color: white;
 
-        box-shadow: 0px 1px 100px 0px #00000040;
+        box-shadow: 0px 1px 20px 0px #aaaaaa40;
 
 
         animation-name: slideInLeftMessageBot;
         animation-duration: 0.5s;
+
+        /* transition: background-color 0.3s ease; */
+
     }
 
     .selection-button-text:hover {
@@ -880,7 +874,8 @@ body {
         padding: 10px 15px;
         border-radius: 100px;
         background-color: white;
-        box-shadow: 0px 1px 100px 0px #00000040;
+        box-shadow: 0px 1px 20px 0px #aaaaaa40;
+
 
         font-size: 12px;
         font-weight: 400;
