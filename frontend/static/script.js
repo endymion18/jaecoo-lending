@@ -44,14 +44,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var textMessages = [text1, text2, text3]
 
-    let time = 1000;
+    let time = 0;
 
     for (let text of textMessages) {
+        time += 1000;
+
         setTimeout(function () {
             botMessage.insertAdjacentHTML("beforebegin", messageTextBot(text, 1));
-
         }, time);
-        time += 1000;
     }
 
     setTimeout(function () {
@@ -60,10 +60,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         //botMessage.insertAdjacentHTML("beforebegin", inputContact());
     }, time);
-
-
-
-
 });
 
 //выбор модели машины
@@ -92,13 +88,9 @@ function carFunc(input) {
     //выбор модели от пользователя
     form.car = input;
 
-
     var textMessages = `${input}`
 
-
     setTimeout(function () {
-        botMessage.scrollIntoView({ behavior: 'smooth' });
-
         botMessage.insertAdjacentHTML("beforebegin", messageTextUser(textMessages));
         botMessage.scrollIntoView({ behavior: 'smooth' });
     }, 0);
@@ -209,13 +201,14 @@ function choiceEquipment() {
 
     setTimeout(function () {
         botMessage.insertAdjacentHTML("beforebegin", messageTextBot(text1, 3));
+        botMessage.insertAdjacentHTML("beforebegin", selectionColors());
+
         botMessage.scrollIntoView({ behavior: 'smooth' });
     }, 1000);
 
-    setTimeout(function () {
-        botMessage.insertAdjacentHTML("beforebegin", selectionColors());
-        botMessage.scrollIntoView({ behavior: 'smooth' });
-    }, 2000);
+    // setTimeout(function () {
+    //     botMessage.scrollIntoView({ behavior: 'smooth' });
+    // }, 2000);
 
 
 }
@@ -303,13 +296,14 @@ function colorFunc(input) {
 
     setTimeout(function () {
         botMessage.insertAdjacentHTML("beforebegin", messageTextBot(text2, 4));
+        botMessage.insertAdjacentHTML("beforebegin", selectionPay());
+
         botMessage.scrollIntoView({ behavior: 'smooth' });
     }, 1000);
 
-    setTimeout(function () {
-        botMessage.insertAdjacentHTML("beforebegin", selectionPay());
-        botMessage.scrollIntoView({ behavior: 'smooth' });
-    }, 2000);
+    // setTimeout(function () {
+    //     botMessage.scrollIntoView({ behavior: 'smooth' });
+    // }, 2000);
 
 }
 
@@ -384,17 +378,16 @@ function payFunc(input) {
 
     setTimeout(function () {
         botMessage.insertAdjacentHTML("beforebegin", messageTextBot(text2, 5));
-
+        botMessage.insertAdjacentHTML("beforebegin", selectionNumber());
 
         botMessage.scrollIntoView({ behavior: 'smooth' });
     }, 1000);
 
-    setTimeout(function () {
+    // setTimeout(function () {
 
-        botMessage.insertAdjacentHTML("beforebegin", selectionNumber());
 
-        botMessage.scrollIntoView({ behavior: 'smooth' });
-    }, 2000);
+    //     botMessage.scrollIntoView({ behavior: 'smooth' });
+    // }, 2000);
 
 }
 
@@ -434,8 +427,6 @@ function numberFunc(input) {
     if (step.step5 === 0) {
         step.step5 = 1;
         // console.log(step);
-
-
     }
     else {
         //location.reload();
@@ -448,22 +439,20 @@ function numberFunc(input) {
 
     var textMessages = [text2, text3]
 
-    let time = 1000;
+    let time = 0;
 
     for (let text of textMessages) {
+        time += 1000;
+
         setTimeout(function () {
             botMessage.insertAdjacentHTML("beforebegin", messageTextBot(text, 6));
             botMessage.scrollIntoView({ behavior: 'smooth' });
-
         }, time);
-        time += 1000;
-
     }
 
     setTimeout(function () {
         botMessage.insertAdjacentHTML("beforebegin", inputContact());
         botMessage.scrollIntoView({ behavior: 'smooth' });
-
     }, time);
 }
 
@@ -517,12 +506,12 @@ function inputFunc() {
     form.client_name = document.getElementById('nameInput').value;
     form.number = document.getElementById('phoneInput').value;
 
-
-
     var textMessages = `${form.client_name}<br>${form.number}`;
 
-    botMessage.insertAdjacentHTML("beforebegin", messageTextUser(textMessages));
-    botMessage.scrollIntoView({ behavior: 'smooth' });
+    setTimeout(function () {
+        botMessage.insertAdjacentHTML("beforebegin", messageTextUser(textMessages));
+        botMessage.scrollIntoView({ behavior: 'smooth' });
+    }, 0);
 
     if (step.step6 === 0) {
         step.step6 = 1;
