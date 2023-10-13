@@ -524,7 +524,7 @@ function inputFunc() {
 function outputJSON(form) {
     const jsonData = JSON.stringify(form);
 
-    fetch('https://jaecoo-lending-test.onrender.com/send-email', {
+    fetch('http://localhost:8000/send-email', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
