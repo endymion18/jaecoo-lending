@@ -27,12 +27,9 @@ document.addEventListener('DOMContentLoaded', function () {
     Меня зовут Алексей. Я онлайн-консультант автосалона JAECOO.`
     var text2 = `Предлагаю Вам ответить на несколько вопросов, чтобы я смог подобрать для вас специальное предложение`;
     var text3 = `Выберите автомобиль:`;
-
     var textMessages = [text1, text2, text3]
 
-
     let time = 0;
-
     for (let text of textMessages) {
         time += 1000;
 
@@ -49,7 +46,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }, time);
     }
 
-
     setTimeout(function () {
         botMessage.insertAdjacentHTML("beforebegin", selectionCars());
 
@@ -58,13 +54,12 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         //botMessage.insertAdjacentHTML("beforebegin", inputContact());
     }, time);
-
 });
 
 //выбор модели машины
 function selectionCars() {
     //предложение модели от бота
-    var imgCar = `static/img/jaecoo_j7 1.png`;
+    var imgCar = `static/img/jaecoo_j7.png`;
 
     var textMessages = `JAECOO J7`;
 
@@ -98,7 +93,6 @@ function carFunc(input) {
 
     if (step.step1 === 0) {
         step.step1 = 1;
-        // console.log(step);
     }
     else {
         deleteChat("1");
@@ -118,12 +112,8 @@ function carFunc(input) {
     }, 2000);
 }
 
-
-
-
 function optionList() {
     //предложение опций от бота
-
     var options = [
         "Двигатель 1.6 Turbo 2WD",
         "Двигатель 1.6 Turbo AWD",
@@ -133,7 +123,7 @@ function optionList() {
         "Большой сенсорный дисплей 14.8",
     ];
 
-    var list = `
+    return `
         <div class="chat-bot-message" id="2">
             <div id="avatar">
                 <img src="${avatar}">
@@ -160,15 +150,10 @@ function optionList() {
             </div>
         </div>
     `
-
-    return list;
 }
 
 function choiceEquipment() {
-
     //выбор опций от пользователя
-
-
     const itemList = document.querySelectorAll('#itemList input[type="checkbox"]:checked');
     const selectedItems = Array.from(itemList).map(item => item.value);
 
@@ -189,15 +174,10 @@ function choiceEquipment() {
 
     disableElement("button");
 
-    //reload
-    // console.log(step.step1);
-
     if (step.step2 === 0) {
         step.step2 = 1;
-        // console.log(step);
     }
     else {
-        //location.reload();
         deleteChat("2");
     }
 
@@ -218,12 +198,6 @@ function choiceEquipment() {
 
         enableElement("button");
     }, 2000);
-
-    // setTimeout(function () {
-    //     botMessage.scrollIntoView({ behavior: 'smooth' });
-    // }, 2000);
-
-
 }
 
 function selectionColors() {
@@ -247,7 +221,7 @@ function selectionColors() {
         `color-green-balack-roof`
     ]
 
-    var buttons = `
+    return `
         <div class="chat-bot-message" id="3">
             ${avatarFunc()}
             <div class="selection-buttons">
@@ -262,8 +236,6 @@ function selectionColors() {
             </div >
         </div >
     `
-
-    return buttons;
 }
 
 function buttonColorFunc(color, idCololr, buttonId) {
@@ -283,12 +255,8 @@ function colorFunc(input) {
 
     var text1 = `${input} `
 
-
-
     setTimeout(function () {
-
         botMessage.insertAdjacentHTML("beforebegin", messageTextUser(text1));
-
         botMessage.scrollIntoView({ behavior: 'smooth' });
     }, 0);
 
@@ -296,15 +264,10 @@ function colorFunc(input) {
 
     if (step.step3 === 0) {
         step.step3 = 1;
-        // console.log(step);
-
-
     }
     else {
-        //location.reload();
         deleteChat("3");
     }
-
 
     var text2 = `Как планируете приобретать автомобиль? `
 
@@ -322,11 +285,6 @@ function colorFunc(input) {
 
         enableElement("button");
     }, 2000);
-
-    // setTimeout(function () {
-    //     botMessage.scrollIntoView({ behavior: 'smooth' });
-    // }, 2000);
-
 }
 
 function selectionPay() {
@@ -336,7 +294,7 @@ function selectionPay() {
         `Трейд-ин`
     ];
 
-    var buttons = `
+    return `
         <div class="chat-bot-message" id="4">
             ${avatarFunc()}
             <div class="selection-buttons">
@@ -358,9 +316,6 @@ function selectionPay() {
             </div>
         </div >
     `
-
-    return buttons;
-
 }
 
 function payFunc(input) {
@@ -378,12 +333,8 @@ function payFunc(input) {
 
     if (step.step4 === 0) {
         step.step4 = 1;
-        // console.log(step);
-
-        //botMessage.insertAdjacentHTML("beforebegin", selectionPay());
     }
     else {
-        //location.reload();
         deleteChat("4");
     }
 
@@ -403,13 +354,6 @@ function payFunc(input) {
 
         enableElement("button");
     }, 2000);
-
-    // setTimeout(function () {
-
-
-    //     botMessage.scrollIntoView({ behavior: 'smooth' });
-    // }, 2000);
-
 }
 
 function selectionNumber() {
@@ -455,7 +399,6 @@ function numberFunc(input) {
         //location.reload();
         deleteChat("5");
     }
-
 
     var text2 = `Спасибо, это были все вопросы. Наш менеджер свяжется с Вами и предложит автомобили из наличия или под заказ.`
     var text3 = `Оставьте ваше имя и телефон: `
@@ -575,7 +518,7 @@ function inputFunc() {
         enableElement("button");
     }, 2000);
 
-    outputJSON(form);
+    //outputJSON(form);
 }
 
 function outputJSON(form) {
@@ -633,8 +576,6 @@ function botTypeFunc() {
 }
 
 function disableElement(elementId) {
-
-
     for (var i = 1; i <= 17; i++) {
         var elementId1 = "button" + i;
 
@@ -647,7 +588,6 @@ function disableElement(elementId) {
 }
 
 function enableElement(elementId) {
-
     for (var i = 1; i <= 17; i++) {
         var elementId1 = "button" + i;
 
