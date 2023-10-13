@@ -13,7 +13,8 @@ app.include_router(router)
 origins = [
     "http://localhost:3000",
     "http://localhost",
-    "localhost:3000"
+    "localhost:3000",
+    "https://jaecoo-lending-test.onrender.com"
 ]
 
 app.add_middleware(
