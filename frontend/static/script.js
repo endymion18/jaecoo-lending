@@ -37,6 +37,14 @@ document.addEventListener('DOMContentLoaded', function () {
         time += 1000;
 
         setTimeout(function () {
+            botMessage.insertAdjacentHTML("beforebegin", botTypeFunc());
+        }, time);
+
+        time += 1000;
+
+        setTimeout(function () {
+            botTyingDelete();
+
             botMessage.insertAdjacentHTML("beforebegin", messageTextBot(text, 1));
         }, time);
     }
@@ -65,7 +73,7 @@ function selectionCars() {
             ${avatarFunc()}
             <div class="selection-buttons-car">
                 <div class="selection-button-car">
-                    <button class="selection-button-car-text" onclick="carFunc('${textMessages}')">
+                    <button id="button1" class="selection-button-car-text" onclick="carFunc('${textMessages}')">
                         <img src="${imgCar}">
                         <p>${textMessages}</p>
                     </button>
@@ -86,9 +94,7 @@ function carFunc(input) {
         botMessage.scrollIntoView({ behavior: 'smooth' });
     }, 0);
 
-
-    //reload
-    // console.log(step.step1);
+    disableElement("button");
 
     if (step.step1 === 0) {
         step.step1 = 1;
@@ -99,9 +105,17 @@ function carFunc(input) {
     }
 
     setTimeout(function () {
+        botMessage.insertAdjacentHTML("beforebegin", botTypeFunc());
+    }, 1000);
+
+    setTimeout(function () {
+        botTyingDelete();
+
         botMessage.insertAdjacentHTML("beforebegin", optionList());
         botMessage.scrollIntoView({ behavior: 'smooth' });
-    }, 1000);
+
+        enableElement("button");
+    }, 2000);
 }
 
 
@@ -141,7 +155,7 @@ function optionList() {
             ${avatarFunc()}
             <div class="selection-buttons">
                 <div class="selection-button">
-                    <button class="selection-button-text" onclick="choiceEquipment()"><p>Далее</p></button>
+                    <button id="button2" class="selection-button-text" onclick="choiceEquipment()"><p>Далее</p></button>
                 </div>        
             </div>
         </div>
@@ -173,7 +187,7 @@ function choiceEquipment() {
         botMessage.scrollIntoView({ behavior: 'smooth' });
     }, 0);
 
-
+    disableElement("button");
 
     //reload
     // console.log(step.step1);
@@ -191,11 +205,19 @@ function choiceEquipment() {
     var text1 = `Выберите цвет автомобиля:`
 
     setTimeout(function () {
+        botMessage.insertAdjacentHTML("beforebegin", botTypeFunc());
+    }, 1000);
+
+    setTimeout(function () {
+        botTyingDelete();
+
         botMessage.insertAdjacentHTML("beforebegin", messageTextBot(text1, 3));
         botMessage.insertAdjacentHTML("beforebegin", selectionColors());
 
         botMessage.scrollIntoView({ behavior: 'smooth' });
-    }, 1000);
+
+        enableElement("button");
+    }, 2000);
 
     // setTimeout(function () {
     //     botMessage.scrollIntoView({ behavior: 'smooth' });
@@ -229,14 +251,14 @@ function selectionColors() {
         <div class="chat-bot-message" id="3">
             ${avatarFunc()}
             <div class="selection-buttons">
-                ${buttonColorFunc(textMessages[0], idColors[0])}
-                ${buttonColorFunc(textMessages[1], idColors[1])}
-                ${buttonColorFunc(textMessages[2], idColors[2])}
-                ${buttonColorFunc(textMessages[3], idColors[3])}
-                ${buttonColorFunc(textMessages[4], idColors[4])}
-                ${buttonColorFunc(textMessages[5], idColors[5])}
-                ${buttonColorFunc(textMessages[6], idColors[6])}
-                ${buttonColorFunc(textMessages[7], idColors[7])}
+                ${buttonColorFunc(textMessages[0], idColors[0], "button10")}
+                ${buttonColorFunc(textMessages[1], idColors[1], "button11")}
+                ${buttonColorFunc(textMessages[2], idColors[2], "button12")}
+                ${buttonColorFunc(textMessages[3], idColors[3], "button13")}
+                ${buttonColorFunc(textMessages[4], idColors[4], "button14")}
+                ${buttonColorFunc(textMessages[5], idColors[5], "button15")}
+                ${buttonColorFunc(textMessages[6], idColors[6], "button16")}
+                ${buttonColorFunc(textMessages[7], idColors[7], "button17")}
             </div >
         </div >
     `
@@ -244,10 +266,10 @@ function selectionColors() {
     return buttons;
 }
 
-function buttonColorFunc(color, idCololr) {
+function buttonColorFunc(color, idCololr, buttonId) {
     return `
         <div div class="selection-button" >
-            <button class="selection-color-text"
+            <button id="${buttonId}" class="selection-color-text"
                 onclick="colorFunc('${color}')">
                 <div id="${idCololr}"></div>
                 <p>${color}</p>
@@ -259,17 +281,18 @@ function buttonColorFunc(color, idCololr) {
 function colorFunc(input) {
     form.color = input;
 
-
-
     var text1 = `${input} `
 
 
+
     setTimeout(function () {
+
         botMessage.insertAdjacentHTML("beforebegin", messageTextUser(text1));
 
         botMessage.scrollIntoView({ behavior: 'smooth' });
     }, 0);
 
+    disableElement("button");
 
     if (step.step3 === 0) {
         step.step3 = 1;
@@ -286,11 +309,19 @@ function colorFunc(input) {
     var text2 = `Как планируете приобретать автомобиль? `
 
     setTimeout(function () {
+        botMessage.insertAdjacentHTML("beforebegin", botTypeFunc());
+    }, 1000);
+
+    setTimeout(function () {
+        botTyingDelete();
+
         botMessage.insertAdjacentHTML("beforebegin", messageTextBot(text2, 4));
         botMessage.insertAdjacentHTML("beforebegin", selectionPay());
 
         botMessage.scrollIntoView({ behavior: 'smooth' });
-    }, 1000);
+
+        enableElement("button");
+    }, 2000);
 
     // setTimeout(function () {
     //     botMessage.scrollIntoView({ behavior: 'smooth' });
@@ -299,10 +330,6 @@ function colorFunc(input) {
 }
 
 function selectionPay() {
-    var text1 = `Кредит`;
-    var text2 = `Наличные`;
-    var text3 = `Трейд-ин`;
-
     var textMessages = [
         `Кредит`,
         `Наличные`,
@@ -314,17 +341,17 @@ function selectionPay() {
             ${avatarFunc()}
             <div class="selection-buttons">
                 <div class="selection-button">
-                    <button class="selection-button-text" onclick="payFunc('${textMessages[0]}')">
+                    <button id="button4" class="selection-button-text" onclick="payFunc('${textMessages[0]}')">
                         <p>${textMessages[0]}</p>
                     </button>
                 </div>
                 <div class="selection-button">
-                    <button class="selection-button-text" onclick="payFunc('${textMessages[1]}')">
+                    <button id="button5" class="selection-button-text" onclick="payFunc('${textMessages[1]}')">
                         <p>${textMessages[1]}</p>
                     </button>
                 </div>
                 <div class="selection-button">
-                    <button class="selection-button-text" onclick="payFunc('${textMessages[2]}')">
+                    <button id="button6" class="selection-button-text" onclick="payFunc('${textMessages[2]}')">
                         <p>${textMessages[2]}</p>
                     </button>
                 </div>
@@ -339,12 +366,7 @@ function selectionPay() {
 function payFunc(input) {
     form.payment_type = input;
 
-
-
-
-
     var text1 = `${input} `
-
 
     setTimeout(function () {
         botMessage.insertAdjacentHTML("beforebegin", messageTextUser(text1));
@@ -352,7 +374,7 @@ function payFunc(input) {
         botMessage.scrollIntoView({ behavior: 'smooth' });
     }, 0);
 
-
+    disableElement("button");
 
     if (step.step4 === 0) {
         step.step4 = 1;
@@ -368,11 +390,19 @@ function payFunc(input) {
     var text2 = `Вы хотите получить расчет стоимости автомобиля звонком по телефону или через WhatsApp ? `
 
     setTimeout(function () {
+        botMessage.insertAdjacentHTML("beforebegin", botTypeFunc());
+    }, 1000);
+
+    setTimeout(function () {
+        botTyingDelete();
+
         botMessage.insertAdjacentHTML("beforebegin", messageTextBot(text2, 5));
         botMessage.insertAdjacentHTML("beforebegin", selectionNumber());
 
         botMessage.scrollIntoView({ behavior: 'smooth' });
-    }, 1000);
+
+        enableElement("button");
+    }, 2000);
 
     // setTimeout(function () {
 
@@ -390,12 +420,12 @@ function selectionNumber() {
             ${avatarFunc()}
             <div class="selection-buttons">
                 <div class="selection-button">
-                    <button class="selection-button-text" onclick="numberFunc('${textMessages[0]}')">
+                    <button id="button7" class="selection-button-text" onclick="numberFunc('${textMessages[0]}')">
                         <p>${textMessages[0]}</p>
                     </button>
                 </div>
                 <div class="selection-button">
-                    <button class="selection-button-text" onclick="numberFunc('${textMessages[1]}')">
+                    <button id="button8" class="selection-button-text" onclick="numberFunc('${textMessages[1]}')">
                         <p>${textMessages[1]}</p>
                     </button>
                 </div>
@@ -414,6 +444,8 @@ function numberFunc(input) {
 
         botMessage.scrollIntoView({ behavior: 'smooth' });
     }, 0);
+
+    disableElement("button");
 
     if (step.step5 === 0) {
         step.step5 = 1;
@@ -436,6 +468,15 @@ function numberFunc(input) {
         time += 1000;
 
         setTimeout(function () {
+            botMessage.insertAdjacentHTML("beforebegin", botTypeFunc());
+        }, time);
+
+        time += 1000;
+
+
+        setTimeout(function () {
+            botTyingDelete();
+
             botMessage.insertAdjacentHTML("beforebegin", messageTextBot(text, 6));
             botMessage.scrollIntoView({ behavior: 'smooth' });
         }, time);
@@ -444,6 +485,8 @@ function numberFunc(input) {
     setTimeout(function () {
         botMessage.insertAdjacentHTML("beforebegin", inputContact());
         botMessage.scrollIntoView({ behavior: 'smooth' });
+
+        enableElement("button");
     }, time);
 }
 
@@ -485,6 +528,7 @@ function inputContact() {
             <div class="selection-buttons">
                 <div class="selection-button">
                     <button 
+                        id="button9" 
                         class="selection-button-text" 
                         onclick="inputFunc()">
                             <p>Далее</p>
@@ -506,6 +550,8 @@ function inputFunc() {
         botMessage.scrollIntoView({ behavior: 'smooth' });
     }, 0);
 
+    disableElement("button");
+
     if (step.step6 === 0) {
         step.step6 = 1;
         // console.log(step);
@@ -517,11 +563,19 @@ function inputFunc() {
     console.log(form);
 
     setTimeout(function () {
-        botMessage.insertAdjacentHTML("beforebegin", messageTextBot("Спасибо! Мы скоро свяжемся с вами.", 7));
-        botMessage.scrollIntoView({ behavior: 'smooth' });
+        botMessage.insertAdjacentHTML("beforebegin", botTypeFunc());
     }, 1000);
 
-    //outputJSON(form);
+    setTimeout(function () {
+        botTyingDelete();
+
+        botMessage.insertAdjacentHTML("beforebegin", messageTextBot("Спасибо! Мы скоро свяжемся с вами.", 7));
+        botMessage.scrollIntoView({ behavior: 'smooth' });
+
+        enableElement("button");
+    }, 2000);
+
+    outputJSON(form);
 }
 
 function outputJSON(form) {
@@ -571,6 +625,48 @@ function avatarFunc() {
     `
 }
 
+function botTypeFunc() {
+    return `
+    <span class="bot-typing-class" id="bot-typing">
+        <i>Алексей печатает <span id="dot1">.</span><span id="dot2">.</span><span id="dot3">.</span></i>
+    </span>`
+}
+
+function disableElement(elementId) {
+
+
+    for (var i = 1; i <= 17; i++) {
+        var elementId1 = "button" + i;
+
+        var element = document.getElementById(elementId1);
+
+        if (element) {
+            element.setAttribute("disabled", "true");
+        }
+    }
+}
+
+function enableElement(elementId) {
+
+    for (var i = 1; i <= 17; i++) {
+        var elementId1 = "button" + i;
+
+        var element = document.getElementById(elementId1);
+
+        if (element) {
+            element.removeAttribute("disabled");
+        }
+    }
+}
+
+function botTyingDelete() {
+    const elementToRemove = document.getElementById("bot-typing");
+
+    if (elementToRemove) {
+        elementToRemove.parentNode.removeChild(elementToRemove);
+    }
+}
+
 function deleteChat(id) {
     var chatElement = document.getElementById("chat");
     var elementsToDelete = [];
@@ -583,8 +679,11 @@ function deleteChat(id) {
             shouldDelete = true;
             continue;
         }
+
         if (shouldDelete) {
-            if (child.classList.contains("chat-bot-message") || child.classList.contains("chat-user-message")) {
+            if (child.classList.contains("chat-bot-message")
+                || child.classList.contains("chat-user-message")
+                || child.classList.contains("bot-typing-class")) {
                 elementsToDelete.push(child);
             }
         }
@@ -608,7 +707,7 @@ window.addEventListener('scroll', function () {
         } else {
             scrollBlock.style.position = 'relative';
             scrollBlock.style.top = '0px';
-            // chatBlock.style.paddingTop = '0px';
+            chatBlock.style.paddingTop = '0px';
         }
     }
     else {
@@ -617,8 +716,3 @@ window.addEventListener('scroll', function () {
         chatBlock.style.paddingTop = '0px';
     }
 });
-
-// var button = document.getElementById('button-test-drive');
-// button.addEventListener('click', function () {
-//     alert('Запись на Тест-драйв');
-// });
