@@ -518,7 +518,7 @@ function inputFunc() {
         enableElement("button");
     }, 2000);
 
-    //outputJSON(form);
+    outputJSON(form);
 }
 
 function outputJSON(form) {
