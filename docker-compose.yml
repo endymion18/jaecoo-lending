@@ -1,0 +1,12 @@
+version: "4.24.2"
+services:
+  app:
+    build:
+      context: .
+    env_file:
+      - .env
+    command:
+      - "/jaecoo_lending_app/docker/app.sh"
+    container_name: jaecoo_lending_app
+    ports:
+      - 9999:8000
