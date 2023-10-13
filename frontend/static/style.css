@@ -774,7 +774,7 @@ body {
     }
 
     #bot-typing {
-        font-size: 16px;
+        font-size: 12px;
         font-weight: 400;
         color: grey;
         padding: 5% 5%;
@@ -1092,10 +1092,8 @@ body {
 
 #color-grey {
     background-color: #3E5054;
-    ;
 }
 
 #color-grey-balack-roof {
     background: linear-gradient(to bottom, #000000 50%, #3E5054 50%);
-
 }
