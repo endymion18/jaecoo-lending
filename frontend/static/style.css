@@ -72,6 +72,60 @@ body {
     }
 }
 
+@keyframes pulse3 {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 0.8;
+    }
+}
+
+@keyframes pulse2 {
+    0% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes pulse1 {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+#dot1 {
+    animation: pulse1 1s infinite;
+}
+
+#dot2 {
+    animation: pulse2 1s infinite;
+}
+
+#dot3 {
+    animation: pulse3 1s infinite;
+}
+
 
 
 .selection-button-car-text {
@@ -98,9 +152,9 @@ body {
 }
 
 .selection-button-car-text:hover {
-    border: 1px solid #296379;
-    background-color: #296379;
-    color: white;
+    border: 1px solid #296379 !important;
+    background-color: #296379 !important;
+    color: white !important;
 }
 
 
@@ -293,6 +347,7 @@ body {
         animation-duration: 0.5s;
     }
 
+
     .chat-bot-message img {
         max-width: 270px;
         height: auto;
@@ -326,6 +381,22 @@ body {
 
         max-width: 70%;
     }
+
+    #bot-typing {
+        font-size: 16px;
+        font-weight: 400;
+        color: grey;
+        padding: 5% 5%;
+
+        border-radius: 0px 23px 23px 23px;
+
+        margin-left: 10%;
+
+        max-width: 70%;
+
+    }
+
+
 
     .message-user-text {
         background-color: #296379;
@@ -361,9 +432,9 @@ body {
     }
 
     .selection-color-text:hover {
-        border: 1px solid #296379;
-        background-color: #296379;
-        color: white;
+        border: 1px solid #296379 !important;
+        background-color: #296379 !important;
+        color: white !important;
     }
 
     .selection-color-text p {
@@ -394,9 +465,9 @@ body {
     }
 
     .selection-button-text:hover {
-        border: 1px solid #296379;
-        background-color: #296379;
-        color: white;
+        border: 1px solid #296379 !important;
+        background-color: #296379 !important;
+        color: white !important;
     }
 
     .selection-button-text p {
@@ -702,6 +773,19 @@ body {
         color: rgb(164, 249, 37)
     }
 
+    #bot-typing {
+        font-size: 16px;
+        font-weight: 400;
+        color: grey;
+        padding: 5% 5%;
+
+        border-radius: 0px 23px 23px 23px;
+
+        margin-left: 10%;
+
+        max-width: 70%;
+
+    }
 
     .chat-bot-message {
         display: flex;
@@ -789,9 +873,9 @@ body {
     }
 
     .selection-color-text:hover {
-        border: 1px solid #296379;
-        background-color: #296379;
-        color: white;
+        border: 1px solid #296379 !important;
+        background-color: #296379 !important;
+        color: white !important;
     }
 
     .selection-color-text p {
@@ -825,9 +909,9 @@ body {
     }
 
     .selection-button-text:hover {
-        border: 1px solid #296379;
-        background-color: #296379;
-        color: white;
+        border: 1px solid #296379 !important;
+        background-color: #296379 !important;
+        color: white !important;
     }
 
     .selection-button-text p {
@@ -909,16 +993,76 @@ body {
         /* box-shadow: 3px 3px 10px rgb(112, 112, 112); */
         z-index: 200;
     }
+}
 
-    #button-call p {
-        padding: 3px;
-        font-size: 8px;
-
-        animation: pulse 4s infinite;
-    }
+#button1:disabled {
+    color: black;
 }
 
 
+#button2:disabled {
+    color: black;
+}
+
+#button3:disabled {
+    color: black;
+}
+
+#button4:disabled {
+    color: black;
+}
+
+#button5:disabled {
+    color: black;
+}
+
+#button6:disabled {
+    color: black;
+}
+
+#button7:disabled {
+    color: black;
+}
+
+#button8:disabled {
+    color: black;
+}
+
+#button9:disabled {
+    color: black;
+}
+
+#button10:disabled {
+    color: black;
+}
+
+#button11:disabled {
+    color: black;
+}
+
+#button12:disabled {
+    color: black;
+}
+
+#button13:disabled {
+    color: black;
+}
+
+#button14:disabled {
+    color: black;
+}
+
+#button15:disabled {
+    color: black;
+}
+
+#button16:disabled {
+    color: black;
+}
+
+#button17:disabled {
+    color: black;
+}
 
 #color-white {
     background-color: white;
