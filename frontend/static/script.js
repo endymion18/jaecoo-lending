@@ -1,6 +1,5 @@
-const avatar = `static/img/Ellipse 2.png`;
+const avatar = `static/img/330b62dae4bcb0d72426b00abb3b5b0e.jpeg`;
 const botMessage = document.getElementById('chat-bot');
-
 
 var step = {
     step1: 0,
@@ -52,7 +51,6 @@ document.addEventListener('DOMContentLoaded', function () {
         if (window.innerWidth > 900) {
             botMessage.scrollIntoView({ behavior: 'smooth' });
         }
-        //botMessage.insertAdjacentHTML("beforebegin", inputContact());
     }, time);
 });
 
@@ -518,13 +516,13 @@ function inputFunc() {
         enableElement("button");
     }, 2000);
 
-    outputJSON(form);
+    //outputJSON(form);
 }
 
 function outputJSON(form) {
     const jsonData = JSON.stringify(form);
 
-    fetch('https://jaecoo-lending-test.onrender.com/send-email', {
+    fetch('http://127.0.0.1:8000/send-email', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
