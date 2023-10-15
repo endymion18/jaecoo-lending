@@ -1,14 +1,5 @@
-const avatar = `static/img/330b62dae4bcb0d72426b00abb3b5b0e.jpeg`;
 const botMessage = document.getElementById('chat-bot');
-
-var step = {
-    step1: 0,
-    step2: 0,
-    step3: 0,
-    step4: 0,
-    step5: 0,
-    step6: 0,
-};
+const avatar = `static/img/330b62dae4bcb0d72426b00abb3b5b0e.jpeg`;
 
 var form = {
     car: "none",
@@ -89,12 +80,7 @@ function carFunc(input) {
 
     disableElement("button");
 
-    if (step.step1 === 0) {
-        step.step1 = 1;
-    }
-    else {
-        deleteChat("1");
-    }
+    deleteChat("1");
 
     setTimeout(function () {
         botMessage.insertAdjacentHTML("beforebegin", botTypeFunc());
@@ -172,12 +158,7 @@ function choiceEquipment() {
 
     disableElement("button");
 
-    if (step.step2 === 0) {
-        step.step2 = 1;
-    }
-    else {
-        deleteChat("2");
-    }
+    deleteChat("2");
 
     //предложение цвета от бота
     var text1 = `Выберите цвет автомобиля:`
@@ -260,12 +241,7 @@ function colorFunc(input) {
 
     disableElement("button");
 
-    if (step.step3 === 0) {
-        step.step3 = 1;
-    }
-    else {
-        deleteChat("3");
-    }
+    deleteChat("3");
 
     var text2 = `Как планируете приобретать автомобиль? `
 
@@ -329,12 +305,7 @@ function payFunc(input) {
 
     disableElement("button");
 
-    if (step.step4 === 0) {
-        step.step4 = 1;
-    }
-    else {
-        deleteChat("4");
-    }
+    deleteChat("4");
 
     var text2 = `Вы хотите получить расчет стоимости автомобиля звонком по телефону или через WhatsApp ? `
 
@@ -389,14 +360,7 @@ function numberFunc(input) {
 
     disableElement("button");
 
-    if (step.step5 === 0) {
-        step.step5 = 1;
-        // console.log(step);
-    }
-    else {
-        //location.reload();
-        deleteChat("5");
-    }
+    deleteChat("5");
 
     var text2 = `Спасибо, это были все вопросы. Наш менеджер свяжется с Вами и предложит автомобили из наличия или под заказ.`
     var text3 = `Оставьте ваше имя и телефон: `
@@ -454,8 +418,9 @@ function inputContact() {
                 <div class="selection-button">
                     <div class="inputPhone">
                         <input 
+
                             name="phone" 
-                            type="text" 
+                            type="tel" 
                             id="phoneInput"
                             utocomplete="number"
                             placeholder="+7 (___) ___-__-__" />
@@ -493,13 +458,7 @@ function inputFunc() {
 
     disableElement("button");
 
-    if (step.step6 === 0) {
-        step.step6 = 1;
-        // console.log(step);
-    }
-    else {
-        deleteChat("6");
-    }
+    deleteChat("6");
 
     console.log(form);
 
@@ -516,13 +475,13 @@ function inputFunc() {
         enableElement("button");
     }, 2000);
 
-    //outputJSON(form);
+    outputJSON(form);
 }
 
 function outputJSON(form) {
     const jsonData = JSON.stringify(form);
 
-    fetch('http://127.0.0.1:8000/send-email', {
+    fetch('https://jaecoo-lending-test.onrender.com/send-email', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
