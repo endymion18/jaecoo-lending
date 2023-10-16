@@ -46,6 +46,6 @@ async def send_email_to_manager(user_info: UserRequestToManager):
 
     msg.set_content(text)
 
-    with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
+    with smtplib.SMTP_SSL('smtp.mail.ru', 465) as server:
         server.login(EMAIL_ADDRESS_FROM, EMAIL_PASSWORD)
         server.send_message(msg)
