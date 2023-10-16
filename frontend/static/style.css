@@ -21,6 +21,7 @@ body {
     animation-duration: 0.5s;
 }
 
+
 @keyframes slideInLeftMessageBot {
     from {
         opacity: 0;
@@ -311,6 +312,9 @@ body {
         margin-bottom: 2px;
 
         position: relative;
+
+        /* box-shadow: 4px 4px 50px -35px #000000f4; */
+
 
         animation-name: chatAnimation;
         animation-duration: 0.5s;
@@ -809,7 +813,7 @@ body {
         flex-direction: row;
 
         border: 1px solid white;
-        padding: 9px 16px;
+        padding: 10px 3px 10px 13px;
         border-radius: 200px;
         background-color: white;
 
@@ -826,7 +830,7 @@ body {
     }
 
     .selection-color-text p {
-        padding: 4px 15px;
+        padding: 3px 13px;
 
         font-size: 12px;
         font-weight: 400;
