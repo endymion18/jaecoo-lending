@@ -49,9 +49,9 @@ document.addEventListener('DOMContentLoaded', function () {
 function selectionCars() {
     //предложение модели от бота
     var imgCar = `static/img/jaecoo_j7.png`;
-
+    var imgCar2 = `static/img/jaecooJ8.png`;
     var textMessages = `JAECOO J7`;
-
+    var textMessages2 = `JAECOO J8`;
     return `
         <div class="chat-bot-message" id="1">
             ${avatarFunc()}
@@ -61,20 +61,35 @@ function selectionCars() {
                         <img src="${imgCar}">
                         <p>${textMessages}</p>
                     </button>
+                    
                 </div>
             </div>
+           
+        </div>
+        <div class="chat-bot-message" id="1">
+            ${avatarFunc()}
+            <div class="selection-buttons-car">
+                <div class="selection-button-car">
+                    <button id="button1" class="selection-button-car-text" onclick="carFunc('${textMessages2}')">
+                        <img src="${imgCar2}">
+                        <p>${textMessages2}</p>
+                    </button>
+                    
+                </div>
+            </div>
+           
         </div>
     `
 }
-
+var textMessag = '';
 function carFunc(input) {
     //выбор модели от пользователя
     form.car = input;
 
-    var textMessages = `${input}`
-
+    textMessag = `${input}`
+    
     setTimeout(function () {
-        botMessage.insertAdjacentHTML("beforebegin", messageTextUser(textMessages));
+        botMessage.insertAdjacentHTML("beforebegin", messageTextUser(textMessag));
         botMessage.scrollIntoView({ behavior: 'smooth' });
     }, 0);
 
@@ -94,18 +109,31 @@ function carFunc(input) {
 
         enableElement("button");
     }, 2000);
+    
 }
 
 function optionList() {
     //предложение опций от бота
     var options = [
+        "Двигатель 2.0 Turbo AWD",
         "Двигатель 1.6 Turbo 2WD",
-        "Двигатель 1.6 Turbo AWD",
         "19-дюймовые алюминиевые литые диски",
         "Адаптивный круиз-контроль (ACC)",
-        "Климат-контроль, 2 зоны",
-        "Большой сенсорный дисплей 14.8",
+        "Климат-контроль, 4 зоны",
+        "Большой сенсорный дисплей 16.8",
     ];
+    if (textMessag == 'JAECOO J7'){
+        options = [
+            "Двигатель 1.6 Turbo 2WD",
+            "Двигатель 1.6 Turbo AWD",
+            "19-дюймовые алюминиевые литые диски",
+            "Адаптивный круиз-контроль (ACC)",
+            "Климат-контроль, 2 зоны",
+            "Большой сенсорный дисплей 14.8",
+        ];
+    }
+   
+    
 
     return `
         <div class="chat-bot-message" id="2">
@@ -199,8 +227,49 @@ function selectionColors() {
         `color-green`,
         `color-green-balack-roof`
     ]
+    
+    if (textMessag == 'JAECOO J8'){
+        idColors = [
+            `color-white`,
+            'color-white-balack-roof',
+            `color-black`,
+            `color-silver`,
+            `color-silver-balack-roof`,
+            `color-grey`,
+            `color-grey-balack-roof`,
+            `color-blue`,
+            `color-blue-balack-roof`
+        ]
+        textMessages = [`Белый`, 
+        'Белый с черной крышей',
+        `Черный`,
+        `Серебристый`,
+        `Серебристый с черной крышей`,
+        `Серый`,
+        `Серый с черной крышей`,
+        `Голубой`,
+        `Голубой с черной крышей`
+        ];
+        return `
+        <div class="chat-bot-message" id="3">
+            ${avatarFunc()}
+            <div class="selection-buttons">
+                ${buttonColorFunc(textMessages[0], idColors[0], "button10")}
+                ${buttonColorFunc(textMessages[1], idColors[1], "button11")}
+                ${buttonColorFunc(textMessages[2], idColors[2], "button12")}
+                ${buttonColorFunc(textMessages[3], idColors[3], "button13")}
+                ${buttonColorFunc(textMessages[4], idColors[4], "button14")}
+                ${buttonColorFunc(textMessages[5], idColors[5], "button15")}
+                ${buttonColorFunc(textMessages[6], idColors[6], "button16")}
+                ${buttonColorFunc(textMessages[7], idColors[7], "button17")}
+                ${buttonColorFunc(textMessages[8], idColors[8], "button18")}
+            </div >
+        </div >
+    `
 
-    return `
+    }
+    else{
+        return `
         <div class="chat-bot-message" id="3">
             ${avatarFunc()}
             <div class="selection-buttons">
@@ -215,6 +284,8 @@ function selectionColors() {
             </div >
         </div >
     `
+    }
+    
 }
 
 function buttonColorFunc(color, idCololr, buttonId) {

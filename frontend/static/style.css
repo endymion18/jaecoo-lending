@@ -520,9 +520,12 @@ body {
     }
 
     #color-white,
+    #color-white-balack-roof,
     #color-black,
     #color-green,
     #color-green-balack-roof,
+    #color-blue,
+    #color-blue-balack-roof,
     #color-silver,
     #color-silver-balack-roof,
     #color-grey,
@@ -884,10 +887,16 @@ body {
         opacity: 1;
     }
 
+  
+    
+    
     #color-white,
+    #color-white-balack-roof,
     #color-black,
     #color-green,
     #color-green-balack-roof,
+    #color-blue,
+    #color-blue-balack-roof,
     #color-silver,
     #color-silver-balack-roof,
     #color-grey,
@@ -1022,6 +1031,22 @@ body {
 #color-green {
     background-color: #909E7E;
 }
+
+#color-blue{
+    background-color: #5B7E97;
+}
+
+
+#color-white-balack-roof {
+    background: linear-gradient(to bottom, #000000 50%, #FFFFFF 50%);
+}
+
+    
+#color-blue-balack-roof {
+    background: linear-gradient(to bottom, #000000 50%, #5B7E97 50%);
+}
+
+
 
 #color-green-balack-roof {
     background: linear-gradient(to bottom, #000000 50%, #909E7E 50%);
